@@ -13,11 +13,11 @@ DbSession = Annotated[Session, Depends(get_db)]
 OrganizationId = Annotated[int | None, Header(alias="X-Organization-ID")]
 
 
-def get_current_organization(
+def get_current_membership(
     current_user: CurrentUser,
     db: DbSession,
     organization_id: OrganizationId,
-) -> Organization:
+) -> OrganizationMembership:
     if organization_id is None:
         raise HTTPException(
             status_code=400,
@@ -38,9 +38,22 @@ def get_current_organization(
             detail="User is not a member of this organization",
         )
 
+    return membership
+
+
+CurrentMembership = Annotated[
+    OrganizationMembership,
+    Depends(get_current_membership),
+]
+
+
+def get_current_organization(
+    current_membership: CurrentMembership,
+    db: DbSession,
+) -> Organization:
     organization = db.scalar(
         select(Organization).where(
-            Organization.id == organization_id,
+            Organization.id == current_membership.organization_id,
         )
     )
 

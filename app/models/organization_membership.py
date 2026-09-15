@@ -4,6 +4,7 @@ from sqlalchemy import Boolean, DateTime, ForeignKey, String, UniqueConstraint, 
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
+from app.tenants.roles import OrganizationRole
 
 
 class OrganizationMembership(Base):
@@ -34,7 +35,7 @@ class OrganizationMembership(Base):
     role: Mapped[str] = mapped_column(
         String(50),
         nullable=False,
-        default="member",
+        default=OrganizationRole.MEMBER.value,
     )
 
     is_active: Mapped[bool] = mapped_column(
