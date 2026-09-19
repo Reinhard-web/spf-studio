@@ -12,6 +12,9 @@ from app.api.opportunities import router as opportunities_router
 from app.api.opportunity_ideas import router as opportunity_ideas_router
 from app.api.organizations import router as organizations_router
 from app.api.problems import router as problems_router
+from app.api.products import router as products_router
+from app.api.projects import router as projects_router
+from app.api.builds import router as builds_router
 from app.core.config import settings
 from app.api.workflows import router as workflows_router
 from app.api.workflow_summary import router as workflow_summary_router
@@ -31,6 +34,9 @@ app.include_router(auth_router)
 app.include_router(organizations_router)
 app.include_router(memberships_router)
 app.include_router(problems_router)
+app.include_router(products_router)
+app.include_router(projects_router)
+app.include_router(builds_router)
 app.include_router(opportunities_router)
 app.include_router(ideas_router)
 app.include_router(opportunity_ideas_router)

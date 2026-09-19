@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SPF Studio Inc. — Command Center</title>
+
+    <style>
+        :root {
+            --primary: #008080;
+            --primary-dark: #006666;
+            --accent: #ff8c00;
+
+            --bg: #f4f7f7;
+            --surface: #ffffff;
+            --surface-soft: #f8fbfb;
+
+            --text: #172121;
+            --muted: #687777;
+
+            --border: #dce5e5;
+
+            --success: #188a57;
+            --warning: #b87800;
+
+            --shadow:
+                0 8px 24px rgba(20, 40, 40, 0.07);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .app {
+            min-height: 100vh;
+        }
+
+        /* NAVIGATION */
+
+        .topbar {
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 32px;
+
+            background: var(--surface);
+
+            border-bottom: 1px solid var(--border);
+
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: var(--primary);
+            color: white;
+
+            font-weight: 900;
+            font-size: 17px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 15px;
+        }
+
+        .brand-subtitle {
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .org-badge {
+            padding: 8px 12px;
+
+            border: 1px solid var(--border);
+            border-radius: 8px;
+
+            background: var(--surface-soft);
+
+            color: var(--muted);
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .logout-button {
+            border: 1px solid var(--border);
+            background: white;
+
+            padding: 8px 13px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .logout-button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* LAYOUT */
+
+        .container {
+            width: min(1200px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 42px 0 70px;
+        }
+
+        /* HERO */
+
+        .hero {
+            display: grid;
+            grid-template-columns:
+                minmax(0, 1.6fr)
+                minmax(280px, 0.8fr);
+
+            gap: 24px;
+
+            margin-bottom: 28px;
+        }
+
+        .hero-main {
+            padding: 38px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff 0%,
+                    #eef8f7 100%
+                );
+
+            border: 1px solid var(--border);
+
+            box-shadow: var(--shadow);
+        }
+
+        .eyebrow {
+            color: var(--primary);
+
+            font-size: 12px;
+            font-weight: 900;
+
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0;
+
+            font-size: clamp(34px, 5vw, 58px);
+
+            line-height: 0.98;
+
+            letter-spacing: -2.5px;
+        }
+
+        .hero-description {
+            max-width: 720px;
+
+            margin: 20px 0 0;
+
+            color: var(--muted);
+
+            font-size: 17px;
+            line-height: 1.65;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+
+            margin-top: 26px;
+
+            flex-wrap: wrap;
+        }
+
+        .primary-button,
+        .secondary-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 11px 17px;
+
+            border-radius: 9px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .primary-button {
+            background: var(--primary);
+            color: white;
+        }
+
+        .primary-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .secondary-button {
+            background: white;
+            color: var(--text);
+
+            border: 1px solid var(--border);
+        }
+
+        .secondary-button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hero-side {
+            padding: 26px;
+
+            border-radius: 18px;
+
+            background: var(--text);
+            color: white;
+
+            box-shadow: var(--shadow);
+        }
+
+        .hero-side-label {
+            color: #a9caca;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+        }
+
+        .hero-side h2 {
+            margin: 12px 0 10px;
+
+            font-size: 24px;
+            line-height: 1.2;
+        }
+
+        .hero-side p {
+            margin: 0;
+
+            color: #c9d5d5;
+
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* SECTION */
+
+        .section {
+            margin-top: 34px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            margin: 0;
+
+            font-size: 21px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-description {
+            margin: 4px 0 0;
+
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+        /* MODULE GRID */
+
+        .module-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 16px;
+        }
+
+        .module {
+            padding: 22px;
+
+            border-radius: 14px;
+
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            box-shadow: 0 4px 16px rgba(20, 40, 40, 0.04);
+
+            text-decoration: none;
+
+            color: inherit;
+
+            transition:
+                transform 0.15s ease,
+                box-shadow 0.15s ease,
+                border-color 0.15s ease;
+        }
+
+        .module:hover {
+            transform: translateY(-2px);
+
+            border-color: #b8cccc;
+
+            box-shadow: var(--shadow);
+        }
+
+        .module-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 15px;
+
+            border-radius: 10px;
+
+            background: #e9f5f4;
+
+            color: var(--primary);
+
+            font-size: 19px;
+            font-weight: 900;
+        }
+
+        .module h3 {
+            margin: 0 0 7px;
+
+            font-size: 17px;
+        }
+
+        .module p {
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .module-status {
+            display: inline-flex;
+
+            margin-top: 16px;
+
+            padding: 5px 8px;
+
+            border-radius: 999px;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            background: #edf8f2;
+            color: var(--success);
+        }
+
+        .module-status.planned {
+            background: #fff7e8;
+            color: var(--warning);
+        }
+
+        /* STUDIOS */
+
+        .studio-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 14px;
+        }
+
+        .studio {
+            min-height: 145px;
+
+            padding: 20px;
+
+            border-radius: 14px;
+
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            text-decoration: none;
+
+            color: inherit;
+        }
+
+        .studio-number {
+            color: var(--accent);
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: 1px;
+        }
+
+        .studio h3 {
+            margin: 10px 0 7px;
+
+            font-size: 16px;
+        }
+
+        .studio p {
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* FACTORY PIPELINE */
+
+        .pipeline {
+            display: grid;
+
+            grid-template-columns:
+                repeat(8, minmax(0, 1fr));
+
+            gap: 8px;
+        }
+
+        .pipeline-step {
+            position: relative;
+
+            padding: 17px 10px;
+
+            text-align: center;
+
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+        }
+
+        .pipeline-step strong {
+            display: block;
+
+            font-size: 12px;
+        }
+
+        .pipeline-step span {
+            display: block;
+
+            margin-top: 5px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+        }
+
+        /* STATUS */
+
+        .status-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 12px;
+        }
+
+        .status-card {
+            padding: 17px;
+
+            border-radius: 12px;
+
+            background: var(--surface);
+
+            border: 1px solid var(--border);
+        }
+
+        .status-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-name {
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: var(--success);
+        }
+
+        .status-card p {
+            margin: 8px 0 0;
+
+            color: var(--muted);
+
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 50px;
+
+            padding-top: 22px;
+
+            border-top: 1px solid var(--border);
+
+            display: flex;
+            justify-content: space-between;
+
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .module-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .studio-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .pipeline {
+                grid-template-columns:
+                    repeat(4, minmax(0, 1fr));
+            }
+
+            .status-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .topbar {
+                padding: 0 16px;
+            }
+
+            .org-badge {
+                display: none;
+            }
+
+            .container {
+                width: min(100% - 24px, 1200px);
+                padding-top: 24px;
+            }
+
+            .hero-main {
+                padding: 25px;
+            }
+
+            .module-grid,
+            .studio-grid,
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pipeline {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                SPF
+            </div>
+
+            <div class="brand-text">
+
+                <div class="brand-name">
+                    SPF Studio Inc.
+                </div>
+
+                <div class="brand-subtitle">
+                    Software & Product Factory
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="top-actions">
+
+            <div
+                id="organizationBadge"
+                class="org-badge"
+            >
+                Organization
+            </div>
+
+            <button
+                class="logout-button"
+                onclick="logout()"
+            >
+                Sign out
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-main">
+
+                <div class="eyebrow">
+                    SPF Command Center
+                </div>
+
+                <h1>
+                    Build the future.
+                </h1>
+
+                <p class="hero-description">
+                    SPF Studio Inc. is a software and product
+                    factory for discovering opportunities,
+                    experimenting with technology, building
+                    products, launching solutions and continuously
+                    improving them.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a
+                        href="/innovation"
+                        class="primary-button"
+                    >
+                        Open Innovation
+                    </a>
+
+                    <a
+                        href="#factory"
+                        class="secondary-button"
+                    >
+                        Explore Factory
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <aside class="hero-side">
+
+                <div class="hero-side-label">
+                    Factory Principle
+                </div>
+
+                <h2>
+                    Ideas become technology.
+                </h2>
+
+                <p>
+                    SPF is designed to move from problem
+                    discovery to real products — not simply
+                    document ideas.
+                </p>
+
+            </aside>
+
+        </section>
+
+
+        <!-- CORE SYSTEM -->
+
+        <section class="section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2 class="section-title">
+                        Core System
+                    </h2>
+
+                    <p class="section-description">
+                        The operating layers of SPF Studio Inc.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="module-grid">
+
+                <a
+                    href="/innovation"
+                    class="module"
+                >
+
+                    <div class="module-icon">
+                        I
+                    </div>
+
+                    <h3>
+                        Innovation
+                    </h3>
+
+                    <p>
+                        Discover problems, opportunities,
+                        ideas, experiments, evidence and
+                        decisions.
+                    </p>
+
+                    <span class="module-status">
+                        Operational
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="module"
+                    onclick="return comingSoon('Labs')"
+                >
+
+                    <div class="module-icon">
+                        L
+                    </div>
+
+                    <h3>
+                        Labs
+                    </h3>
+
+                    <p>
+                        Experiment with AI, agents,
+                        automation, voice, UX and emerging
+                        technology.
+                    </p>
+
+                    <span class="module-status planned">
+                        Building
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#factory"
+                    class="module"
+                >
+
+                    <div class="module-icon">
+                        F
+                    </div>
+
+                    <h3>
+                        Factory
+                    </h3>
+
+                    <p>
+                        Turn validated opportunities into
+                        products, projects, builds and
+                        deployable technology.
+                    </p>
+
+                    <span class="module-status planned">
+                        Building
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#studios"
+                    class="module"
+                >
+
+                    <div class="module-icon">
+                        S
+                    </div>
+
+                    <h3>
+                        Studios
+                    </h3>
+
+                    <p>
+                        Build solutions for churches,
+                        businesses, individuals and future
+                        markets.
+                    </p>
+
+                    <span class="module-status planned">
+                        Building
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="module"
+                    onclick="return comingSoon('Launch')"
+                >
+
+                    <div class="module-icon">
+                        →
+                    </div>
+
+                    <h3>
+                        Launch
+                    </h3>
+
+                    <p>
+                        Prepare products for release,
+                        deployment, distribution and
+                        commercialization.
+                    </p>
+
+                    <span class="module-status planned">
+                        Planned
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="module"
+                    onclick="return comingSoon('Operations')"
+                >
+
+                    <div class="module-icon">
+                        O
+                    </div>
+
+                    <h3>
+                        Operations
+                    </h3>
+
+                    <p>
+                        Monitor live products, usage,
+                        analytics, customer feedback and
+                        continuous improvement.
+                    </p>
+
+                    <span class="module-status planned">
+                        Planned
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- STUDIOS -->
+
+        <section
+            class="section"
+            id="studios"
+        >
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2 class="section-title">
+                        SPF Studios
+                    </h2>
+
+                    <p class="section-description">
+                        Specialized environments for building
+                        real-world products.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="studio-grid">
+
+                <a
+                    href="#"
+                    class="studio"
+                    onclick="return comingSoon('Church & Ministry Studio')"
+                >
+
+                    <div class="studio-number">
+                        STUDIO 01
+                    </div>
+
+                    <h3>
+                        Church & Ministry
+                    </h3>
+
+                    <p>
+                        Websites, church apps, ministry
+                        platforms, AI tools and digital
+                        ministry solutions.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="studio"
+                    onclick="return comingSoon('Business Studio')"
+                >
+
+                    <div class="studio-number">
+                        STUDIO 02
+                    </div>
+
+                    <h3>
+                        Business
+                    </h3>
+
+                    <p>
+                        Business websites, systems,
+                        automation, AI solutions and
+                        operational technology.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="studio"
+                    onclick="return comingSoon('Personal Studio')"
+                >
+
+                    <div class="studio-number">
+                        STUDIO 03
+                    </div>
+
+                    <h3>
+                        Personal
+                    </h3>
+
+                    <p>
+                        Personal productivity, goals,
+                        life management and intelligent
+                        personal technology.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="studio"
+                    onclick="return comingSoon('Future Studio')"
+                >
+
+                    <div class="studio-number">
+                        STUDIO 04
+                    </div>
+
+                    <h3>
+                        Future
+                    </h3>
+
+                    <p>
+                        Experimental products and
+                        technologies for emerging markets
+                        and future opportunities.
+                    </p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- FACTORY -->
+
+        <section
+            class="section"
+            id="factory"
+        >
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2 class="section-title">
+                        Product Factory
+                    </h2>
+
+                    <p class="section-description">
+                        The path from discovery to a real
+                        technology product.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="pipeline">
+
+                <div class="pipeline-step">
+                    <strong>Problem</strong>
+                    <span>Discover</span>
+                </div>
+
+                <div class="pipeline-step">
+                    <strong>Opportunity</strong>
+                    <span>Frame</span>
+                </div>
+
+                <div class="pipeline-step">
+                    <strong>Idea</strong>
+                    <span>Design</span>
+                </div>
+
+                <div class="pipeline-step">
+                    <strong>Product</strong>
+                    <span>Define</span>
+                </div>
+
+                <div class="pipeline-step">
+                    <strong>Build</strong>
+                    <span>Create</span>
+                </div>
+
+                <div class="pipeline-step">
+                    <strong>Test</strong>
+                    <span>Validate</span>
+                </div>
+
+                <div class="pipeline-step">
+                    <strong>Deploy</strong>
+                    <span>Launch</span>
+                </div>
+
+                <div class="pipeline-step">
+                    <strong>Improve</strong>
+                    <span>Iterate</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SYSTEM STATUS -->
+
+        <section class="section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2 class="section-title">
+                        System Status
+                    </h2>
+
+                    <p class="section-description">
+                        Current SPF platform development status.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-grid">
+
+                <div class="status-card">
+
+                    <div class="status-card-header">
+
+                        <div class="status-name">
+                            Authentication
+                        </div>
+
+                        <div class="status-dot"></div>
+
+                    </div>
+
+                    <p>
+                        JWT authentication and session
+                        management operational.
+                    </p>
+
+                </div>
+
+
+                <div class="status-card">
+
+                    <div class="status-card-header">
+
+                        <div class="status-name">
+                            Organizations
+                        </div>
+
+                        <div class="status-dot"></div>
+
+                    </div>
+
+                    <p>
+                        Multi-organization context and
+                        switching operational.
+                    </p>
+
+                </div>
+
+
+                <div class="status-card">
+
+                    <div class="status-card-header">
+
+                        <div class="status-name">
+                            Innovation
+                        </div>
+
+                        <div class="status-dot"></div>
+
+                    </div>
+
+                    <p>
+                        Innovation workflow is operational
+                        and connected to the database.
+                    </p>
+
+                </div>
+
+
+                <div class="status-card">
+
+                    <div class="status-card-header">
+
+                        <div class="status-name">
+                            Product Factory
+                        </div>
+
+                        <div
+                            class="status-dot"
+                            style="background: var(--accent);"
+                        ></div>
+
+                    </div>
+
+                    <p>
+                        Factory architecture is now being
+                        established.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <div>
+                SPF Studio Inc.
+            </div>
+
+            <div>
+                Software & Product Factory
+            </div>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    const SPF_TOKEN_KEY =
+        "spf_access_token";
+
+    const SPF_ORG_KEY =
+        "spf_organization_id";
+
+
+    function requireAuthentication() {
+
+        const token =
+            localStorage.getItem(
+                SPF_TOKEN_KEY
+            );
+
+        if (!token) {
+
+            window.location.href =
+                "/innovation";
+
+            return false;
+        }
+
+        return true;
+    }
+
+
+    function loadOrganization() {
+
+        const organizationId =
+            localStorage.getItem(
+                SPF_ORG_KEY
+            );
+
+        const badge =
+            document.getElementById(
+                "organizationBadge"
+            );
+
+        if (
+            badge &&
+            organizationId
+        ) {
+
+            badge.textContent =
+                "Organization #" +
+                organizationId;
+
+        }
+
+    }
+
+
+    function logout() {
+
+        localStorage.removeItem(
+            SPF_TOKEN_KEY
+        );
+
+        localStorage.removeItem(
+            SPF_ORG_KEY
+        );
+
+        window.location.href =
+            "/innovation";
+
+    }
+
+
+    function comingSoon(name) {
+
+        alert(
+            name +
+            " is part of the SPF Product Factory roadmap."
+        );
+
+        return false;
+    }
+
+
+    requireAuthentication();
+    loadOrganization();
+
+</script>
+
+</body>
+</html>
