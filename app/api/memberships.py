@@ -1,21 +1,54 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy import select
+from sqlalchemy.orm import Session
 
 from app.auth.current_user import CurrentUser
 from app.db.session import get_db
+from app.models.organization import Organization
+from app.models.organization_membership import OrganizationMembership
 from app.schemas.membership import AddMemberRequest
 from app.tenants.context import CurrentMembership
 from app.tenants.memberships import add_member
 from app.tenants.permissions import has_role_level
 from app.tenants.roles import OrganizationRole
 
-router = APIRouter(
-    prefix="/memberships",
-    tags=["Memberships"],
-)
+router = APIRouter(prefix="/memberships", tags=["Memberships"])
 
-DbSession = Annotated[object, Depends(get_db)]
+DbSession = Annotated[Session, Depends(get_db)]
+
+
+@router.get("/mine")
+def get_my_memberships(
+    current_user: CurrentUser,
+    db: DbSession,
+):
+    rows = db.execute(
+        select(
+            OrganizationMembership,
+            Organization,
+        )
+        .join(
+            Organization,
+            Organization.id == OrganizationMembership.organization_id,
+        )
+        .where(
+            OrganizationMembership.user_id == current_user.id,
+            OrganizationMembership.is_active.is_(True),
+        )
+    ).all()
+
+    return [
+        {
+            "membership_id": membership.id,
+            "organization_id": organization.id,
+            "organization_name": organization.name,
+            "organization_slug": organization.slug,
+            "role": membership.role,
+        }
+        for membership, organization in rows
+    ]
 
 
 @router.post("")

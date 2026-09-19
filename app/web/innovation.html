@@ -2688,7 +2688,50 @@
 
     <script>
         const SPF_TOKEN_KEY = "spf_access_token";
-        const SPF_ORG_ID = "7";
+        const SPF_ORG_KEY = "spf_organization_id";
+        async function loadMyOrganization() {
+    const token = localStorage.getItem(SPF_TOKEN_KEY);
+
+    if (!token) {
+        throw new Error("You are not logged in.");
+    }
+
+    const response = await fetch("/memberships/mine", {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    if (response.status === 401) {
+        localStorage.removeItem(SPF_TOKEN_KEY);
+        localStorage.removeItem(SPF_ORG_KEY);
+        showLogin();
+        throw new Error("Your session has expired.");
+    }
+
+    if (!response.ok) {
+        throw new Error("Unable to load your organization.");
+    }
+
+    const organizations = await response.json();
+
+    if (!Array.isArray(organizations) || organizations.length === 0) {
+        localStorage.removeItem(SPF_ORG_KEY);
+        throw new Error(
+            "Your account is not assigned to an organization."
+        );
+    }
+
+    const organization = organizations[0];
+
+    localStorage.setItem(
+        SPF_ORG_KEY,
+        String(organization.organization_id)
+    );
+
+    return organization;
+}
 
         function showWorkspace() {
             const loginScreen =
@@ -2724,6 +2767,7 @@
 
         function signOut() {
             localStorage.removeItem(SPF_TOKEN_KEY);
+            localStorage.removeItem(SPF_ORG_KEY);
             showLogin();
 
             const loginForm =
@@ -2752,7 +2796,7 @@
                             "Authorization":
                                 "Bearer " + token,
                             "X-Organization-ID":
-                                SPF_ORG_ID
+                                localStorage.getItem(SPF_ORG_KEY)
                         }
                     }
                 );
@@ -2992,6 +3036,8 @@
                                     data.access_token
                                 );
 
+                                await loadMyOrganization();
+
                                 showWorkspace();
 
                                 await loadDashboard();
@@ -3024,10 +3070,19 @@
                     );
 
                 if (token) {
-                    showWorkspace();
+                    try {
+                        await loadMyOrganization();
+                        showWorkspace();
 
-                    await loadDashboard();
-                    await loadProblems();
+                        await loadDashboard();
+                        await loadProblems();
+                    } catch (error) {
+                        console.error(
+                            "Session restore error:",
+                            error
+                        );
+                        showLogin();
+                    }
                 } else {
                     showLogin();
                 }
@@ -3071,7 +3126,7 @@
                                 "Authorization":
                                     "Bearer " + token,
                                 "X-Organization-ID":
-                                    SPF_ORG_ID
+                                    localStorage.getItem(SPF_ORG_KEY)
                             }
                         }
                     );
@@ -3299,7 +3354,7 @@
                                 "Authorization":
                                     "Bearer " + token,
                                 "X-Organization-ID":
-                                    SPF_ORG_ID
+                                    localStorage.getItem(SPF_ORG_KEY)
                             }
                         }
                     );
@@ -3773,7 +3828,7 @@
                                             token,
 
                                         "X-Organization-ID":
-                                            SPF_ORG_ID,
+                                            localStorage.getItem(SPF_ORG_KEY),
 
                                         "Content-Type":
                                             "application/json"
@@ -3910,7 +3965,7 @@
                     {
                         headers: {
                             "Authorization": `Bearer ${token}`,
-                            "X-Organization-ID": "7"
+                            "X-Organization-ID": localStorage.getItem(SPF_ORG_KEY)
                         }
                     }
                 );
@@ -4187,7 +4242,7 @@
                 const response = await fetch("/innovation/opportunities", {
                     headers: {
                         "Authorization": `Bearer ${token}`,
-                        "X-Organization-ID": "7"
+                        "X-Organization-ID": localStorage.getItem(SPF_ORG_KEY)
                     }
                 });
 
@@ -4270,7 +4325,7 @@
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,
-                    "X-Organization-ID": "7"
+                    "X-Organization-ID": localStorage.getItem(SPF_ORG_KEY)
                 },
 
                 body: JSON.stringify(payload)
@@ -4442,8 +4497,8 @@
 
             const organizationId =
                 localStorage.getItem(
-                    "spf_organization_id"
-                ) || "7";
+                    SPF_ORG_KEY
+                );
 
             if (!token) {
                 throw new Error(
@@ -4681,7 +4736,7 @@
                     {
                         headers: {
                             "Authorization": `Bearer ${token}`,
-                            "X-Organization-ID": "7"
+                            "X-Organization-ID": localStorage.getItem(SPF_ORG_KEY)
                         }
                     }
                 );
@@ -4793,7 +4848,7 @@
                     headers: {
                         "Authorization":
                             `Bearer ${token}`,
-                        "X-Organization-ID": "7",
+                        "X-Organization-ID": localStorage.getItem(SPF_ORG_KEY),
                         "Content-Type":
                             "application/json"
                     },
@@ -4919,7 +4974,7 @@ async function populateEvidenceExperiments() {
 
                 headers: {
                     "Authorization": `Bearer ${token}`,
-                    "X-Organization-ID": "7"
+                    "X-Organization-ID": localStorage.getItem(SPF_ORG_KEY)
                 }
             }
         );
@@ -5004,7 +5059,7 @@ async function createEvidence(event) {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,
-                    "X-Organization-ID": "7"
+                    "X-Organization-ID": localStorage.getItem(SPF_ORG_KEY)
                 },
 
                 body: JSON.stringify(payload)
@@ -5087,7 +5142,7 @@ function getSPFHeaders() {
 
     return {
         "Authorization": `Bearer ${token}`,
-        "X-Organization-ID": "7"
+        "X-Organization-ID": localStorage.getItem(SPF_ORG_KEY)
     };
 }
 
