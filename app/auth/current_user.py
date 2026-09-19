@@ -9,7 +9,7 @@ from app.auth.tokens import decode_access_token
 from app.db.session import get_db
 from app.models.user import User
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/token")
 
 DbSession = Annotated[Session, Depends(get_db)]
 Token = Annotated[str, Depends(oauth2_scheme)]
