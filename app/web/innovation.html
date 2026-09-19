@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-    <title>SPF Studio Inc. — Innovation</title>
+    <title>SPF Studio Inc. â€” Innovation</title>
 
     <style>
         :root {
@@ -222,6 +222,36 @@
             line-height: 1.6;
         }
 
+        .organization-switcher {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .organization-switcher label {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .organization-switcher select {
+            min-width: 220px;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            color: var(--text);
+            font: inherit;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .organization-switcher select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.12);
+        }
         .system-status {
             display: inline-flex;
             align-items: center;
@@ -363,7 +393,7 @@
         }
 
         .pipeline-step:not(:last-child)::after {
-            content: "→";
+            content: "â†’";
             position: absolute;
             right: -17px;
             top: 50%;
@@ -805,7 +835,7 @@
             }
 
             .pipeline-step:not(:last-child)::after {
-                content: "↓";
+                content: "â†“";
                 right: auto;
                 left: 50%;
                 top: auto;
@@ -914,6 +944,12 @@
                     learning from evidence and making informed decisions.
                 </p>
 
+                <div class="organization-switcher">
+                    <label for="organizationSelector">Organization</label>
+                    <select id="organizationSelector">
+                        <option value="">Loading organization...</option>
+                    </select>
+                </div>
                 <div class="system-status">
                     <span class="system-status-dot"></span>
                     Innovation system active
@@ -931,7 +967,7 @@
                     <div
                         id="problemsCount"
                         class="metric-value"
-                    >—</div>
+                    >â€”</div>
                 </div>
 
                 <div class="metric-card">
@@ -939,7 +975,7 @@
                     <div
                         id="opportunitiesCount"
                         class="metric-value"
-                    >—</div>
+                    >â€”</div>
                 </div>
 
                 <div class="metric-card">
@@ -947,7 +983,7 @@
                     <div
                         id="ideasCount"
                         class="metric-value"
-                    >—</div>
+                    >â€”</div>
                 </div>
 
                 <div class="metric-card">
@@ -955,7 +991,7 @@
                     <div
                         id="experimentsCount"
                         class="metric-value"
-                    >—</div>
+                    >â€”</div>
                 </div>
 
                 <div class="metric-card">
@@ -963,7 +999,7 @@
                     <div
                         id="learningsCount"
                         class="metric-value"
-                    >—</div>
+                    >â€”</div>
                 </div>
 
                 <div class="metric-card">
@@ -971,7 +1007,7 @@
                     <div
                         id="evidenceCount"
                         class="metric-value"
-                    >—</div>
+                    >â€”</div>
                 </div>
 
                 <div class="metric-card">
@@ -979,7 +1015,7 @@
                     <div
                         id="decisionsCount"
                         class="metric-value"
-                    >—</div>
+                    >â€”</div>
                 </div>
             </section>
 
@@ -1006,7 +1042,7 @@
                                 id="currentFocus"
                                 class="focus-value"
                             >
-                                —
+                                â€”
                             </div>
                         </div>
 
@@ -1019,7 +1055,7 @@
                                 id="nextActions"
                                 class="actions-list"
                             >
-                                <li>—</li>
+                                <li>â€”</li>
                             </ul>
                         </div>
 
@@ -1045,7 +1081,7 @@
                                 id="experimentsRunning"
                                 class="focus-value"
                             >
-                                —
+                                â€”
                             </div>
                         </div>
 
@@ -1058,7 +1094,7 @@
                                 id="experimentsCompleted"
                                 class="focus-value"
                             >
-                                —
+                                â€”
                             </div>
                         </div>
 
@@ -1071,7 +1107,7 @@
                                 id="unvalidatedExperiments"
                                 class="focus-value"
                             >
-                                —
+                                â€”
                             </div>
                         </div>
 
@@ -1106,7 +1142,7 @@
                                 id="pipelineProblems"
                                 class="pipeline-count"
                             >
-                                —
+                                â€”
                             </div>
                         </div>
 
@@ -1121,7 +1157,7 @@
                                 id="pipelineOpportunities"
                                 class="pipeline-count"
                             >
-                                —
+                                â€”
                             </div>
                         </div>
 
@@ -1136,7 +1172,7 @@
                                 id="pipelineIdeas"
                                 class="pipeline-count"
                             >
-                                —
+                                â€”
                             </div>
                         </div>
 
@@ -1151,7 +1187,7 @@
                                 id="pipelineExperiments"
                                 class="pipeline-count"
                             >
-                                —
+                                â€”
                             </div>
                         </div>
 
@@ -1166,7 +1202,7 @@
                                 id="pipelineLearnings"
                                 class="pipeline-count"
                             >
-                                —
+                                â€”
                             </div>
                         </div>
 
@@ -1181,7 +1217,7 @@
                                 id="pipelineEvidence"
                                 class="pipeline-count"
                             >
-                                —
+                                â€”
                             </div>
                         </div>
 
@@ -1196,7 +1232,7 @@
                                 id="pipelineDecisions"
                                 class="pipeline-count"
                             >
-                                —
+                                â€”
                             </div>
                         </div>
 
@@ -1252,7 +1288,7 @@
                                     class="create-problem-close"
                                     onclick="hideCreateProblemForm()"
                                 >
-                                    ×
+                                    Ã—
                                 </button>
                             </div>
 
@@ -1495,7 +1531,7 @@
                 class="modal-close"
                 onclick="hideCreateDecisionForm()"
             >
-                ×
+                Ã—
             </button>
         </div>
 
@@ -1691,7 +1727,7 @@
                 class="modal-close"
                 onclick="hideCreateEvidenceForm()"
             >
-                ×
+                Ã—
             </button>
         </div>
 
@@ -1911,7 +1947,7 @@
                 class="modal-close"
                 onclick="hideCreateLearningForm()"
             >
-                ×
+                Ã—
             </button>
         </div>
 
@@ -2076,7 +2112,7 @@
                                         class="modal-close"
                                         onclick="hideCreateExperimentForm()"
                                     >
-                                        ×
+                                        Ã—
                                     </button>
                                 </div>
 
@@ -2254,7 +2290,7 @@
                                         class="modal-close"
                                         onclick="hideCreateIdeaForm()"
                                     >
-                                        ×
+                                        Ã—
                                     </button>
                                 </div>
 
@@ -2430,7 +2466,7 @@
                                     class="create-problem-close"
                                     onclick="hideCreateOpportunityForm()"
                                 >
-                                    ×
+                                    Ã—
                                 </button>
                             </div>
 
@@ -2689,49 +2725,127 @@
     <script>
         const SPF_TOKEN_KEY = "spf_access_token";
         const SPF_ORG_KEY = "spf_organization_id";
-        async function loadMyOrganization() {
-    const token = localStorage.getItem(SPF_TOKEN_KEY);
+                async function loadMyOrganization() {
+            const token =
+                localStorage.getItem(SPF_TOKEN_KEY);
 
-    if (!token) {
-        throw new Error("You are not logged in.");
-    }
+            if (!token) {
+                throw new Error("You are not logged in.");
+            }
 
-    const response = await fetch("/memberships/mine", {
-        method: "GET",
-        headers: {
-            "Authorization": "Bearer " + token
+            const response = await fetch(
+                "/memberships/mine",
+                {
+                    method: "GET",
+                    headers: {
+                        "Authorization":
+                            "Bearer " + token
+                    }
+                }
+            );
+
+            if (response.status === 401) {
+                localStorage.removeItem(
+                    SPF_TOKEN_KEY
+                );
+
+                localStorage.removeItem(
+                    SPF_ORG_KEY
+                );
+
+                showLogin();
+
+                throw new Error(
+                    "Your session has expired."
+                );
+            }
+
+            if (!response.ok) {
+                throw new Error(
+                    "Unable to load your organizations."
+                );
+            }
+
+            const organizations =
+                await response.json();
+
+            if (
+                !Array.isArray(organizations) ||
+                organizations.length === 0
+            ) {
+                localStorage.removeItem(
+                    SPF_ORG_KEY
+                );
+
+                throw new Error(
+                    "Your account is not assigned to an organization."
+                );
+            }
+
+            const selector =
+                document.getElementById(
+                    "organizationSelector"
+                );
+
+            if (selector) {
+                selector.innerHTML = "";
+
+                organizations.forEach(
+                    (organization) => {
+                        const option =
+                            document.createElement(
+                                "option"
+                            );
+
+                        option.value =
+                            organization.organization_id;
+
+                        option.textContent =
+                            organization.organization_name;
+
+                        selector.appendChild(
+                            option
+                        );
+                    }
+                );
+            }
+
+            const savedOrganizationId =
+                localStorage.getItem(
+                    SPF_ORG_KEY
+                );
+
+            const savedOrganization =
+                organizations.find(
+                    (organization) =>
+                        String(
+                            organization.organization_id
+                        ) ===
+                        String(
+                            savedOrganizationId
+                        )
+                );
+
+            const organization =
+                savedOrganization ||
+                organizations[0];
+
+            localStorage.setItem(
+                SPF_ORG_KEY,
+                String(
+                    organization.organization_id
+                )
+            );
+
+            if (selector) {
+                selector.value =
+                    String(
+                        organization.organization_id
+                    );
+            }
+
+            return organization;
         }
-    });
-
-    if (response.status === 401) {
-        localStorage.removeItem(SPF_TOKEN_KEY);
-        localStorage.removeItem(SPF_ORG_KEY);
-        showLogin();
-        throw new Error("Your session has expired.");
-    }
-
-    if (!response.ok) {
-        throw new Error("Unable to load your organization.");
-    }
-
-    const organizations = await response.json();
-
-    if (!Array.isArray(organizations) || organizations.length === 0) {
-        localStorage.removeItem(SPF_ORG_KEY);
-        throw new Error(
-            "Your account is not assigned to an organization."
-        );
-    }
-
-    const organization = organizations[0];
-
-    localStorage.setItem(
-        SPF_ORG_KEY,
-        String(organization.organization_id)
-    );
-
-    return organization;
-}
 
         function showWorkspace() {
             const loginScreen =
@@ -2747,6 +2861,57 @@
             if (workspace) {
                 workspace.classList.remove("hidden");
             }
+        }
+        
+                function setupOrganizationSwitcher() {
+            const selector =
+                document.getElementById(
+                    "organizationSelector"
+                );
+
+            if (!selector) {
+                return;
+            }
+
+            selector.addEventListener(
+                "change",
+                async function () {
+                    const organizationId =
+                        selector.value;
+
+                    if (!organizationId) {
+                        return;
+                    }
+
+                    localStorage.setItem(
+                        SPF_ORG_KEY,
+                        organizationId
+                    );
+
+                    try {
+                        await loadDashboard();
+                        await loadProblems();
+
+                        const selectedProblemSection =
+                            document.getElementById(
+                                "selectedProblemSection"
+                            );
+
+                        if (
+                            selectedProblemSection
+                        ) {
+                            selectedProblemSection.classList.add(
+                                "hidden"
+                            );
+                        }
+                    } catch (error) {
+                        console.error(
+                            "Organization switch error:",
+                            error
+                        );
+                    }
+                }
+            );
         }
 
         function showLogin() {
@@ -2871,7 +3036,7 @@
                 document.getElementById(
                     "currentFocus"
                 ).textContent =
-                    data.current_focus || "—";
+                    data.current_focus || "â€”";
 
                 const nextActions =
                     document.getElementById(
@@ -3038,6 +3203,8 @@
 
                                 await loadMyOrganization();
 
+                                setupOrganizationSwitcher();
+
                                 showWorkspace();
 
                                 await loadDashboard();
@@ -3072,6 +3239,9 @@
                 if (token) {
                     try {
                         await loadMyOrganization();
+
+                        setupOrganizationSwitcher();
+
                         showWorkspace();
 
                         await loadDashboard();
@@ -5480,3 +5650,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
+
+
+
