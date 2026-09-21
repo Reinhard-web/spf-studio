@@ -9,3 +9,4 @@ python-jose
 passlib[bcrypt]
 httpx==0.28.1
 PyJWT
+argon2-cffi
