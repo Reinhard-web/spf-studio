@@ -2,10 +2,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.auth import router as auth_router
+from app.api.builds import router as builds_router
 from app.api.decisions import router as decisions_router
+from app.api.deployments import router as deployments_router
 from app.api.evidence import router as evidence_router
 from app.api.experiments import router as experiments_router
 from app.api.ideas import router as ideas_router
+from app.api.innovation_dashboard import router as innovation_dashboard_router
 from app.api.learnings import router as learnings_router
 from app.api.memberships import router as memberships_router
 from app.api.opportunities import router as opportunities_router
@@ -14,12 +17,10 @@ from app.api.organizations import router as organizations_router
 from app.api.problems import router as problems_router
 from app.api.products import router as products_router
 from app.api.projects import router as projects_router
-from app.api.builds import router as builds_router
 from app.api.tests import router as tests_router
-from app.core.config import settings
-from app.api.workflows import router as workflows_router
 from app.api.workflow_summary import router as workflow_summary_router
-from app.api.innovation_dashboard import router as innovation_dashboard_router
+from app.api.workflows import router as workflows_router
+from app.core.config import settings
 from app.web.router import router as web_router
 
 app = FastAPI(title=settings.app_name)
@@ -39,6 +40,7 @@ app.include_router(products_router)
 app.include_router(projects_router)
 app.include_router(builds_router)
 app.include_router(tests_router)
+app.include_router(deployments_router)
 app.include_router(opportunities_router)
 app.include_router(ideas_router)
 app.include_router(opportunity_ideas_router)
