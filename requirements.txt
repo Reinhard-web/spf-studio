@@ -1,0 +1,10 @@
+fastapi==0.141.1
+uvicorn==0.53.0
+sqlalchemy
+psycopg[binary]
+alembic
+pydantic
+pydantic-settings
+python-jose
+passlib[bcrypt]
+httpx==0.28.1
