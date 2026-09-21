@@ -10,6 +10,7 @@ from app.models.team_membership import TeamMembership
 from app.models.user import User
 from app.models.experiment import Experiment
 from app.models.evidence import Evidence
+from app.models.test import Test
 from app.models.learning import Learning
 from app.models.project import Project
 from app.models.decision import Decision
