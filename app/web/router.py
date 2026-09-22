@@ -1,8 +1,6 @@
 from pathlib import Path
-
 from fastapi import APIRouter
 from fastapi.responses import FileResponse
-
 
 router = APIRouter()
 
@@ -17,3 +15,8 @@ def command_center_page():
 @router.get("/innovation", include_in_schema=False)
 def innovation_page():
     return FileResponse(BASE_DIR / "innovation.html")
+
+
+@router.get("/future-intelligence", include_in_schema=False)
+def future_intelligence_page():
+    return FileResponse(BASE_DIR / "future-intelligence.html")

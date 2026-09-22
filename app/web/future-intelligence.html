@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        SPF Studio Inc. — Future Intelligence
+    </title>
+
+    <style>
+
+        :root {
+
+            --charcoal: #111827;
+            --charcoal-soft: #1F2937;
+            --slate: #374151;
+
+            --blue: #4F7CFF;
+            --blue-light: #6EA8FE;
+            --blue-soft: #EEF4FF;
+
+            --amber: #F59E0B;
+            --amber-soft: #FFF7E6;
+
+            --background: #F8FAFC;
+            --white: #FFFFFF;
+
+            --text: #172033;
+            --text-soft: #667085;
+
+            --border: #E5E7EB;
+
+            --success: #16A34A;
+            --success-soft: #ECFDF3;
+
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+                var(--background);
+
+            color:
+                var(--text);
+
+        }
+
+
+        .topbar {
+
+            height: 72px;
+
+            background:
+                var(--white);
+
+            border-bottom:
+                1px solid var(--border);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                0 32px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 10;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            font-weight: 700;
+
+        }
+
+
+        .brand-mark {
+
+            width: 38px;
+
+            height: 38px;
+
+            border-radius: 10px;
+
+            background:
+                var(--charcoal);
+
+            color:
+                var(--white);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 13px;
+
+        }
+
+
+        .brand-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 2px;
+
+        }
+
+
+        .brand-name {
+
+            font-size: 14px;
+
+        }
+
+
+        .brand-subtitle {
+
+            font-size: 11px;
+
+            color:
+                var(--text-soft);
+
+            font-weight: 500;
+
+        }
+
+
+        .topbar-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+        }
+
+
+        .workspace-label {
+
+            font-size: 13px;
+
+            color:
+                var(--text-soft);
+
+        }
+
+
+        .back-button {
+
+            border:
+                1px solid var(--border);
+
+            background:
+                var(--white);
+
+            color:
+                var(--text);
+
+            border-radius: 8px;
+
+            padding:
+                9px 14px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+        }
+
+
+        .back-button:hover {
+
+            background:
+                var(--background);
+
+        }
+
+
+        .container {
+
+            max-width: 1240px;
+
+            margin:
+                0 auto;
+
+            padding:
+                48px 28px 80px;
+
+        }
+
+
+        .eyebrow {
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: .12em;
+
+            color:
+                var(--blue);
+
+            margin-bottom: 10px;
+
+        }
+
+
+        h1 {
+
+            margin: 0;
+
+            font-size:
+                clamp(34px, 5vw, 56px);
+
+            line-height: 1.05;
+
+            letter-spacing:
+                -0.04em;
+
+        }
+
+
+        .intro {
+
+            max-width: 760px;
+
+            margin-top: 18px;
+
+            color:
+                var(--text-soft);
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .status {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 24px;
+
+            padding:
+                9px 13px;
+
+            border-radius: 999px;
+
+            background:
+                var(--success-soft);
+
+            color:
+                var(--success);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+        }
+
+
+        .status-dot {
+
+            width: 8px;
+
+            height: 8px;
+
+            border-radius: 50%;
+
+            background:
+                var(--success);
+
+        }
+
+
+        .intelligence-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-top: 42px;
+
+        }
+
+
+        .intelligence-card {
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 16px;
+
+            padding:
+                24px;
+
+            min-height: 190px;
+
+            transition:
+                transform .18s ease,
+                box-shadow .18s ease;
+
+        }
+
+
+        .intelligence-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(15, 23, 42, .07);
+
+        }
+
+
+        .card-number {
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            color:
+                var(--blue);
+
+            letter-spacing: .1em;
+
+        }
+
+
+        .card-title {
+
+            margin-top: 22px;
+
+            font-size: 20px;
+
+            font-weight: 750;
+
+        }
+
+
+        .card-text {
+
+            margin-top: 10px;
+
+            color:
+                var(--text-soft);
+
+            line-height: 1.6;
+
+            font-size: 14px;
+
+        }
+
+
+        .qualification {
+
+            margin-top: 22px;
+
+            background:
+                var(--charcoal);
+
+            color:
+                var(--white);
+
+            border-radius: 18px;
+
+            padding:
+                30px;
+
+        }
+
+
+        .qualification .card-number {
+
+            color:
+                var(--blue-light);
+
+        }
+
+
+        .qualification h2 {
+
+            margin:
+                12px 0 8px;
+
+            font-size: 26px;
+
+        }
+
+
+        .qualification p {
+
+            max-width: 760px;
+
+            margin: 0;
+
+            color:
+                #CBD5E1;
+
+            line-height: 1.65;
+
+        }
+
+
+        .review {
+
+            margin-top: 22px;
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 18px;
+
+            padding:
+                30px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 24px;
+
+        }
+
+
+        .review h2 {
+
+            margin:
+                0 0 8px;
+
+            font-size: 24px;
+
+        }
+
+
+        .review p {
+
+            margin: 0;
+
+            color:
+                var(--text-soft);
+
+            line-height: 1.6;
+
+        }
+
+
+        .review-button {
+
+            border: 0;
+
+            background:
+                var(--blue);
+
+            color:
+                var(--white);
+
+            border-radius: 9px;
+
+            padding:
+                12px 18px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            white-space: nowrap;
+
+        }
+
+
+        @media (max-width: 900px) {
+
+            .intelligence-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 640px) {
+
+            .topbar {
+
+                padding:
+                    0 16px;
+
+            }
+
+            .workspace-label {
+
+                display: none;
+
+            }
+
+            .container {
+
+                padding:
+                    34px 18px 60px;
+
+            }
+
+            .intelligence-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+            .review {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                SPF
+            </div>
+
+            <div class="brand-text">
+
+                <div class="brand-name">
+                    SPF Studio Inc.
+                </div>
+
+                <div class="brand-subtitle">
+                    Future Intelligence
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div class="workspace-label">
+                Future Studio
+            </div>
+
+            <button
+                class="back-button"
+                onclick="window.location.href='/'"
+            >
+                ← Command Center
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <div class="eyebrow">
+            FUTURE INTELLIGENCE
+        </div>
+
+
+        <h1>
+            See what's coming.<br>
+            Build what's next.
+        </h1>
+
+
+        <p class="intro">
+
+            An intelligence layer for discovering emerging signals,
+            trends, needs and opportunities that may become the next
+            products SPF should investigate.
+
+        </p>
+
+
+        <div class="status">
+
+            <span class="status-dot"></span>
+
+            Intelligence architecture active
+
+        </div>
+
+
+        <section class="intelligence-grid">
+
+
+            <article class="intelligence-card">
+
+                <div class="card-number">
+                    01 · SIGNALS
+                </div>
+
+                <div class="card-title">
+                    Live Signals
+                </div>
+
+                <div class="card-text">
+                    Detect emerging developments, changes and events
+                    that may create new needs or opportunities.
+                </div>
+
+            </article>
+
+
+            <article class="intelligence-card">
+
+                <div class="card-number">
+                    02 · TRENDS
+                </div>
+
+                <div class="card-title">
+                    Trend Radar
+                </div>
+
+                <div class="card-text">
+                    Track movements gaining momentum across technology,
+                    markets, society and emerging industries.
+                </div>
+
+            </article>
+
+
+            <article class="intelligence-card">
+
+                <div class="card-number">
+                    03 · NEEDS
+                </div>
+
+                <div class="card-title">
+                    Emerging Needs
+                </div>
+
+                <div class="card-text">
+                    Surface problems and unmet needs that could become
+                    opportunities for new solutions.
+                </div>
+
+            </article>
+
+
+            <article class="intelligence-card">
+
+                <div class="card-number">
+                    04 · OPPORTUNITIES
+                </div>
+
+                <div class="card-title">
+                    Opportunity Map
+                </div>
+
+                <div class="card-text">
+                    Connect signals, trends and needs into areas
+                    that deserve deeper investigation.
+                </div>
+
+            </article>
+
+
+            <article class="intelligence-card">
+
+                <div class="card-number">
+                    05 · PRODUCTS
+                </div>
+
+                <div class="card-title">
+                    Product Candidates
+                </div>
+
+                <div class="card-text">
+                    Identify possible products and technologies that
+                    could address emerging opportunities.
+                </div>
+
+            </article>
+
+
+            <article class="intelligence-card">
+
+                <div class="card-number">
+                    06 · RISK
+                </div>
+
+                <div class="card-title">
+                    Risk & Trust
+                </div>
+
+                <div class="card-text">
+                    Examine uncertainty, potential risks and important
+                    trust considerations before advancing an opportunity.
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <section class="qualification">
+
+            <div class="card-number">
+                07 · QUALIFICATION ENGINE
+            </div>
+
+            <h2>
+                What deserves attention?
+            </h2>
+
+            <p>
+                AI will eventually assess signals and opportunities
+                against evidence, relevance, potential, feasibility
+                and risk—helping SPF focus human attention where it
+                matters most.
+            </p>
+
+        </section>
+
+
+        <section class="review">
+
+            <div>
+
+                <h2>
+                    Human Review
+                </h2>
+
+                <p>
+                    AI can discover and assess possibilities.
+                    A human decides what enters the Innovation pipeline.
+                </p>
+
+            </div>
+
+
+            <button
+                class="review-button"
+                type="button"
+            >
+                Review Opportunities
+            </button>
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>
