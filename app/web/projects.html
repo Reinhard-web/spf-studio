@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SPF Studio Inc. — Projects</title>
+
+<style>
+    :root {
+        --charcoal: #111827;
+        --blue: #4F7CFF;
+        --blue-light: #6EA8FE;
+        --blue-soft: #EEF4FF;
+        --background: #F8FAFC;
+        --white: #FFFFFF;
+        --text: #172033;
+        --text-soft: #667085;
+        --border: #E5E7EB;
+        --success: #16A34A;
+        --success-soft: #ECFDF3;
+        --amber: #F59E0B;
+        --amber-soft: #FFF7E6;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: var(--background);
+        color: var(--text);
+        font-family:
+            Inter,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+    }
+
+    .topbar {
+        height: 64px;
+        padding: 0 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+        font-size: 14px;
+        font-weight: 900;
+    }
+
+    .brand span {
+        color: var(--blue);
+    }
+
+    .back-button {
+        padding: 9px 14px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--white);
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .back-button:hover {
+        border-color: var(--blue-light);
+        color: var(--blue);
+    }
+
+    .page {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 54px 32px 80px;
+    }
+
+    .eyebrow {
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+    }
+
+    h1 {
+        margin: 10px 0 0;
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+
+    .intro {
+        max-width: 720px;
+        margin-top: 12px;
+        color: var(--text-soft);
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .status {
+        display: inline-flex;
+        margin-top: 22px;
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: var(--blue-soft);
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: .5px;
+    }
+
+    .project-grid {
+        margin-top: 42px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .project-card {
+        padding: 22px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        transition: .2s ease;
+    }
+
+    .project-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--blue-light);
+        box-shadow: 0 10px 24px rgba(17, 24, 39, .06);
+    }
+
+    .project-number {
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .project-card h2 {
+        margin: 14px 0 0;
+        font-size: 16px;
+    }
+
+    .project-card p {
+        margin: 8px 0 0;
+        color: var(--text-soft);
+        font-size: 11px;
+        line-height: 1.55;
+    }
+
+    .project-status {
+        display: inline-block;
+        margin-top: 17px;
+        padding: 5px 8px;
+        border-radius: 6px;
+        background: var(--success-soft);
+        color: var(--success);
+        font-size: 9px;
+        font-weight: 900;
+        letter-spacing: .4px;
+    }
+
+    .project-lifecycle {
+        margin-top: 42px;
+        padding: 26px;
+        background: var(--charcoal);
+        border-radius: 16px;
+        color: var(--white);
+    }
+
+    .lifecycle-label {
+        color: var(--blue-light);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .project-lifecycle h2 {
+        margin: 9px 0 0;
+        font-size: 21px;
+    }
+
+    .project-lifecycle p {
+        max-width: 700px;
+        margin: 8px 0 0;
+        color: #CBD5E1;
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .flow {
+        margin-top: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        align-items: center;
+    }
+
+    .flow-step {
+        padding: 8px 11px;
+        border: 1px solid rgba(255,255,255,.13);
+        border-radius: 7px;
+        background: rgba(255,255,255,.06);
+        font-size: 10px;
+        font-weight: 800;
+    }
+
+    .arrow {
+        color: var(--blue-light);
+        font-weight: 900;
+    }
+
+    .attention {
+        margin-top: 18px;
+        padding: 22px;
+        background: var(--amber-soft);
+        border: 1px solid #FDE7B2;
+        border-radius: 14px;
+    }
+
+    .attention-label {
+        color: var(--amber);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .attention h2 {
+        margin: 8px 0 0;
+        font-size: 17px;
+    }
+
+    .attention p {
+        margin: 7px 0 0;
+        color: #6B7280;
+        font-size: 11px;
+        line-height: 1.55;
+    }
+
+    @media (max-width: 900px) {
+        .project-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 650px) {
+        .topbar {
+            padding: 0 18px;
+        }
+
+        .page {
+            padding: 40px 18px 60px;
+        }
+
+        .project-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .flow {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .arrow {
+            text-align: center;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        SPF <span>Studio Inc.</span>
+    </div>
+
+    <button
+        class="back-button"
+        onclick="window.location.href='/'"
+    >
+        ← Command Center
+    </button>
+
+</header>
+
+<main class="page">
+
+    <div class="eyebrow">
+        SPF PROJECTS
+    </div>
+
+    <h1>
+        Turn Ideas Into Projects.
+    </h1>
+
+    <p class="intro">
+        The project environment for organizing real work,
+        coordinating delivery and moving approved products
+        from concept toward completion.
+    </p>
+
+    <div class="status">
+        PROJECTS WORKSPACE ACTIVE
+    </div>
+
+    <section class="project-grid">
+
+        <article class="project-card">
+            <div class="project-number">01</div>
+
+            <h2>
+                Project Definition
+            </h2>
+
+            <p>
+                Establish the objective, scope,
+                outcomes and requirements.
+            </p>
+
+            <span class="project-status">
+                READY
+            </span>
+        </article>
+
+        <article class="project-card">
+            <div class="project-number">02</div>
+
+            <h2>
+                Planning
+            </h2>
+
+            <p>
+                Break the work into milestones,
+                tasks, resources and timelines.
+            </p>
+
+            <span class="project-status">
+                READY
+            </span>
+        </article>
+
+        <article class="project-card">
+            <div class="project-number">03</div>
+
+            <h2>
+                Execution
+            </h2>
+
+            <p>
+                Coordinate the work required to
+                move the project forward.
+            </p>
+
+            <span class="project-status">
+                READY
+            </span>
+        </article>
+
+        <article class="project-card">
+            <div class="project-number">04</div>
+
+            <h2>
+                Collaboration
+            </h2>
+
+            <p>
+                Keep people, responsibilities,
+                decisions and communication aligned.
+            </p>
+
+            <span class="project-status">
+                READY
+            </span>
+        </article>
+
+        <article class="project-card">
+            <div class="project-number">05</div>
+
+            <h2>
+                Delivery
+            </h2>
+
+            <p>
+                Track milestones, completion and
+                successful delivery of project outcomes.
+            </p>
+
+            <span class="project-status">
+                READY
+            </span>
+        </article>
+
+        <article class="project-card">
+            <div class="project-number">06</div>
+
+            <h2>
+                Review
+            </h2>
+
+            <p>
+                Capture lessons, evidence and
+                improvements after delivery.
+            </p>
+
+            <span class="project-status">
+                READY
+            </span>
+        </article>
+
+    </section>
+
+    <section class="project-lifecycle">
+
+        <div class="lifecycle-label">
+            PROJECT LIFECYCLE
+        </div>
+
+        <h2>
+            From approved idea to completed outcome.
+        </h2>
+
+        <p>
+            Projects connect SPF's discovery and product
+            systems with the actual work required to deliver
+            something useful in the real world.
+        </p>
+
+        <div class="flow">
+
+            <div class="flow-step">
+                Opportunity
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-step">
+                Idea
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-step">
+                Project
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-step">
+                Tasks
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-step">
+                Delivery
+            </div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-step">
+                Review
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="attention">
+
+        <div class="attention-label">
+            PROJECT PRINCIPLE
+        </div>
+
+        <h2>
+            Make progress visible.
+        </h2>
+
+        <p>
+            Every project should make it clear what needs
+            to happen, who is responsible, what has been
+            completed and what is blocking progress.
+        </p>
+
+    </section>
+
+</main>
+
+</body>
+</html>

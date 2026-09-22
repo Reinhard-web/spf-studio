@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SPF Studio Inc. — Operations</title>
+
+<style>
+    :root {
+        --charcoal: #111827;
+        --blue: #4F7CFF;
+        --blue-light: #6EA8FE;
+        --blue-soft: #EEF4FF;
+        --background: #F8FAFC;
+        --white: #FFFFFF;
+        --text: #172033;
+        --text-soft: #667085;
+        --border: #E5E7EB;
+        --success: #16A34A;
+        --success-soft: #ECFDF3;
+        --amber: #F59E0B;
+        --amber-soft: #FFF7E6;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: var(--background);
+        color: var(--text);
+        font-family:
+            Inter,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+    }
+
+    .topbar {
+        height: 64px;
+        padding: 0 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+        font-size: 14px;
+        font-weight: 900;
+    }
+
+    .brand span {
+        color: var(--blue);
+    }
+
+    .back-button {
+        padding: 9px 14px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--white);
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .back-button:hover {
+        border-color: var(--blue-light);
+        color: var(--blue);
+    }
+
+    .page {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 54px 32px 80px;
+    }
+
+    .eyebrow {
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+    }
+
+    h1 {
+        margin: 10px 0 0;
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+
+    .intro {
+        max-width: 720px;
+        margin-top: 12px;
+        color: var(--text-soft);
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .status {
+        display: inline-flex;
+        margin-top: 22px;
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: var(--success-soft);
+        color: var(--success);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: .5px;
+    }
+
+    .metrics {
+        margin-top: 42px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+    }
+
+    .metric {
+        padding: 20px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+    }
+
+    .metric-label {
+        color: var(--text-soft);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .6px;
+        text-transform: uppercase;
+    }
+
+    .metric-value {
+        margin-top: 10px;
+        font-size: 26px;
+        font-weight: 900;
+    }
+
+    .metric-note {
+        margin-top: 4px;
+        color: var(--text-soft);
+        font-size: 10px;
+    }
+
+    .dashboard {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap: 18px;
+    }
+
+    .panel {
+        padding: 25px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+    }
+
+    .panel-label {
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .panel h2 {
+        margin: 9px 0 0;
+        font-size: 20px;
+    }
+
+    .panel-intro {
+        margin: 8px 0 0;
+        color: var(--text-soft);
+        font-size: 12px;
+        line-height: 1.55;
+    }
+
+    .operation {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 15px 0;
+        border-top: 1px solid var(--border);
+    }
+
+    .operations-list {
+        margin-top: 22px;
+    }
+
+    .operation-title {
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .operation-text {
+        margin-top: 4px;
+        color: var(--text-soft);
+        font-size: 10px;
+        line-height: 1.45;
+    }
+
+    .badge {
+        flex-shrink: 0;
+        height: fit-content;
+        padding: 5px 8px;
+        border-radius: 6px;
+        background: var(--success-soft);
+        color: var(--success);
+        font-size: 9px;
+        font-weight: 900;
+    }
+
+    .attention {
+        margin-top: 18px;
+        padding: 21px;
+        background: var(--amber-soft);
+        border: 1px solid #FDE7B2;
+        border-radius: 14px;
+    }
+
+    .attention-label {
+        color: var(--amber);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .attention h2 {
+        margin: 8px 0 0;
+        font-size: 17px;
+    }
+
+    .attention p {
+        margin: 7px 0 0;
+        color: #6B7280;
+        font-size: 11px;
+        line-height: 1.55;
+    }
+
+    .system {
+        margin-top: 20px;
+        padding: 25px;
+        background: var(--charcoal);
+        border-radius: 16px;
+        color: var(--white);
+    }
+
+    .system-label {
+        color: var(--blue-light);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .system h2 {
+        margin: 9px 0 0;
+        font-size: 21px;
+    }
+
+    .system p {
+        max-width: 700px;
+        margin: 8px 0 0;
+        color: #CBD5E1;
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+        .metrics {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .dashboard {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 650px) {
+        .topbar {
+            padding: 0 18px;
+        }
+
+        .page {
+            padding: 40px 18px 60px;
+        }
+
+        .metrics {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        SPF <span>Studio Inc.</span>
+    </div>
+
+    <button
+        class="back-button"
+        onclick="window.location.href='/'"
+    >
+        ← Command Center
+    </button>
+
+</header>
+
+<main class="page">
+
+    <div class="eyebrow">
+        SPF OPERATIONS
+    </div>
+
+    <h1>
+        Operate. Monitor. Improve.
+    </h1>
+
+    <p class="intro">
+        The operational environment for monitoring products,
+        projects, systems and performance after they move
+        into active use.
+    </p>
+
+    <div class="status">
+        OPERATIONS WORKSPACE ACTIVE
+    </div>
+
+    <section class="metrics">
+
+        <div class="metric">
+            <div class="metric-label">
+                Active Products
+            </div>
+            <div class="metric-value">
+                0
+            </div>
+            <div class="metric-note">
+                Currently operating
+            </div>
+        </div>
+
+        <div class="metric">
+            <div class="metric-label">
+                Active Projects
+            </div>
+            <div class="metric-value">
+                0
+            </div>
+            <div class="metric-note">
+                In execution
+            </div>
+        </div>
+
+        <div class="metric">
+            <div class="metric-label">
+                System Health
+            </div>
+            <div class="metric-value">
+                —
+            </div>
+            <div class="metric-note">
+                Monitoring coming online
+            </div>
+        </div>
+
+        <div class="metric">
+            <div class="metric-label">
+                Improvements
+            </div>
+            <div class="metric-value">
+                0
+            </div>
+            <div class="metric-note">
+                Awaiting live feedback
+            </div>
+        </div>
+
+    </section>
+
+    <section class="dashboard">
+
+        <div class="panel">
+
+            <div class="panel-label">
+                OPERATIONS CONTROL
+            </div>
+
+            <h2>
+                What SPF monitors.
+            </h2>
+
+            <p class="panel-intro">
+                Operations brings together the information
+                required to understand how active products
+                and systems are performing.
+            </p>
+
+            <div class="operations-list">
+
+                <div class="operation">
+                    <div>
+                        <div class="operation-title">
+                            Product Performance
+                        </div>
+                        <div class="operation-text">
+                            Monitor usage, reliability and
+                            product performance.
+                        </div>
+                    </div>
+
+                    <span class="badge">
+                        READY
+                    </span>
+                </div>
+
+                <div class="operation">
+                    <div>
+                        <div class="operation-title">
+                            Projects
+                        </div>
+                        <div class="operation-text">
+                            Track active work, progress,
+                            blockers and delivery.
+                        </div>
+                    </div>
+
+                    <span class="badge">
+                        READY
+                    </span>
+                </div>
+
+                <div class="operation">
+                    <div>
+                        <div class="operation-title">
+                            Systems
+                        </div>
+                        <div class="operation-text">
+                            Monitor infrastructure,
+                            services and integrations.
+                        </div>
+                    </div>
+
+                    <span class="badge">
+                        READY
+                    </span>
+                </div>
+
+                <div class="operation">
+                    <div>
+                        <div class="operation-title">
+                            Feedback &amp; Evidence
+                        </div>
+                        <div class="operation-text">
+                            Capture real-world feedback
+                            and evidence for improvement.
+                        </div>
+                    </div>
+
+                    <span class="badge">
+                        READY
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="panel">
+
+                <div class="panel-label">
+                    OPERATIONAL INTELLIGENCE
+                </div>
+
+                <h2>
+                    See what needs attention.
+                </h2>
+
+                <p class="panel-intro">
+                    Future operations can use system data,
+                    product signals and user feedback to
+                    surface issues and improvement opportunities.
+                </p>
+
+            </div>
+
+            <div class="attention">
+
+                <div class="attention-label">
+                    IMPROVEMENT LOOP
+                </div>
+
+                <h2>
+                    Learn from what happens in the real world.
+                </h2>
+
+                <p>
+                    Operational evidence can feed back into
+                    product development, innovation and future
+                    opportunities.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="system">
+
+        <div class="system-label">
+            SPF OPERATING LOOP
+        </div>
+
+        <h2>
+            Build → Launch → Operate → Learn → Improve
+        </h2>
+
+        <p>
+            Operations closes the loop between what SPF builds
+            and what happens after people begin using it.
+            Real-world performance becomes evidence for the
+            next improvement cycle.
+        </p>
+
+    </section>
+
+</main>
+
+</body>
+</html>

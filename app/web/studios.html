@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SPF Studio Inc. — Studios</title>
+
+<style>
+    :root {
+        --charcoal: #111827;
+        --blue: #4F7CFF;
+        --blue-light: #6EA8FE;
+        --blue-soft: #EEF4FF;
+        --background: #F8FAFC;
+        --white: #FFFFFF;
+        --text: #172033;
+        --text-soft: #667085;
+        --border: #E5E7EB;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: var(--background);
+        color: var(--text);
+        font-family:
+            Inter,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+    }
+
+    .topbar {
+        height: 64px;
+        padding: 0 32px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+        font-size: 14px;
+        font-weight: 900;
+    }
+
+    .brand span {
+        color: var(--blue);
+    }
+
+    .back-button {
+        padding: 9px 14px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--white);
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .back-button:hover {
+        border-color: var(--blue-light);
+        color: var(--blue);
+    }
+
+    .page {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 54px 32px 80px;
+    }
+
+    .eyebrow {
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+    }
+
+    h1 {
+        margin: 10px 0 0;
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+
+    .intro {
+        max-width: 700px;
+        margin-top: 12px;
+        color: var(--text-soft);
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .status {
+        display: inline-flex;
+        margin-top: 22px;
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: var(--blue-soft);
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: .5px;
+    }
+
+    .studios-grid {
+        margin-top: 42px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .studio {
+        padding: 26px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        transition: .2s ease;
+    }
+
+    .studio:hover {
+        transform: translateY(-3px);
+        border-color: var(--blue-light);
+        box-shadow: 0 12px 28px rgba(17, 24, 39, .07);
+    }
+
+    .studio-number {
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .studio h2 {
+        margin: 14px 0 0;
+        font-size: 19px;
+    }
+
+    .studio p {
+        margin: 9px 0 0;
+        color: var(--text-soft);
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .studio-list {
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .studio-list li {
+        padding: 8px 0;
+        border-top: 1px solid var(--border);
+        color: #4B5563;
+        font-size: 11px;
+    }
+
+    .studio-list li:last-child {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .future {
+        border-color: #D7E2FF;
+        background: linear-gradient(
+            180deg,
+            #FFFFFF 0%,
+            #F7F9FF 100%
+        );
+    }
+
+    .future-badge {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 6px 9px;
+        border-radius: 7px;
+        background: var(--blue-soft);
+        color: var(--blue);
+        font-size: 9px;
+        font-weight: 900;
+        letter-spacing: .6px;
+    }
+
+    @media (max-width: 800px) {
+        .topbar {
+            padding: 0 18px;
+        }
+
+        .page {
+            padding: 40px 18px 60px;
+        }
+
+        .studios-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        SPF <span>Studio Inc.</span>
+    </div>
+
+    <button
+        class="back-button"
+        onclick="window.location.href='/'"
+    >
+        ← Command Center
+    </button>
+
+</header>
+
+<main class="page">
+
+    <div class="eyebrow">
+        SPF STUDIOS
+    </div>
+
+    <h1>
+        Specialized Environments.
+    </h1>
+
+    <p class="intro">
+        Studios give SPF dedicated environments for building
+        solutions around different types of people, organizations,
+        industries and emerging opportunities.
+    </p>
+
+    <div class="status">
+        STUDIOS WORKSPACE ACTIVE
+    </div>
+
+    <section class="studios-grid">
+
+        <article class="studio">
+
+            <div class="studio-number">
+                STUDIO 01
+            </div>
+
+            <h2>
+                Church &amp; Ministry
+            </h2>
+
+            <p>
+                Digital platforms and intelligent tools
+                designed for churches, ministries and
+                faith-based organizations.
+            </p>
+
+            <ul class="studio-list">
+                <li>Church websites &amp; apps</li>
+                <li>Membership &amp; administration</li>
+                <li>Events &amp; communication</li>
+                <li>Digital ministry tools</li>
+            </ul>
+
+        </article>
+
+        <article class="studio">
+
+            <div class="studio-number">
+                STUDIO 02
+            </div>
+
+            <h2>
+                Business
+            </h2>
+
+            <p>
+                Digital systems and intelligent solutions
+                designed to help businesses operate,
+                grow and serve customers.
+            </p>
+
+            <ul class="studio-list">
+                <li>Business platforms</li>
+                <li>Operations &amp; automation</li>
+                <li>Customer systems</li>
+                <li>AI-powered business tools</li>
+            </ul>
+
+        </article>
+
+        <article class="studio">
+
+            <div class="studio-number">
+                STUDIO 03
+            </div>
+
+            <h2>
+                Personal
+            </h2>
+
+            <p>
+                Intelligent technology for personal
+                productivity, planning, organization
+                and everyday life.
+            </p>
+
+            <ul class="studio-list">
+                <li>Personal productivity</li>
+                <li>Goals &amp; planning</li>
+                <li>Life management</li>
+                <li>Personal AI tools</li>
+            </ul>
+
+        </article>
+
+        <article class="studio future">
+
+            <div class="studio-number">
+                STUDIO 04
+            </div>
+
+            <h2>
+                Future
+            </h2>
+
+            <p>
+                Experimental environments for emerging
+                technologies, future markets and solutions
+                that may shape what comes next.
+            </p>
+
+            <ul class="studio-list">
+                <li>Future Intelligence</li>
+                <li>AI safety &amp; trust</li>
+                <li>Autonomous operations</li>
+                <li>Smart infrastructure &amp; agriculture</li>
+            </ul>
+
+            <span class="future-badge">
+                FUTURE INTELLIGENCE
+            </span>
+
+        </article>
+
+    </section>
+
+</main>
+
+</body>
+</html>

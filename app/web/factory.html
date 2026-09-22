@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>SPF Studio Inc. — Factory</title>
+
+<style>
+    :root {
+        --charcoal: #111827;
+        --charcoal-soft: #1F2937;
+        --blue: #4F7CFF;
+        --blue-light: #6EA8FE;
+        --blue-soft: #EEF4FF;
+        --background: #F8FAFC;
+        --white: #FFFFFF;
+        --text: #172033;
+        --text-soft: #667085;
+        --border: #E5E7EB;
+        --success: #16A34A;
+        --success-soft: #ECFDF3;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: var(--background);
+        color: var(--text);
+        font-family:
+            Inter,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+    }
+
+    .topbar {
+        height: 64px;
+        padding: 0 32px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+        font-size: 14px;
+        font-weight: 900;
+    }
+
+    .brand span {
+        color: var(--blue);
+    }
+
+    .back-button {
+        padding: 9px 14px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--white);
+        color: var(--text);
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .back-button:hover {
+        border-color: var(--blue-light);
+        color: var(--blue);
+    }
+
+    .page {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 54px 32px 80px;
+    }
+
+    .eyebrow {
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+    }
+
+    h1 {
+        margin: 10px 0 0;
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+
+    .intro {
+        max-width: 680px;
+        margin-top: 12px;
+        color: var(--text-soft);
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .status {
+        display: inline-flex;
+        margin-top: 22px;
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: var(--success-soft);
+        color: var(--success);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: .5px;
+    }
+
+    .pipeline {
+        margin-top: 42px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .stage {
+        position: relative;
+        padding: 22px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        transition: .2s ease;
+    }
+
+    .stage:hover {
+        transform: translateY(-2px);
+        border-color: var(--blue-light);
+        box-shadow: 0 10px 24px rgba(17, 24, 39, .06);
+    }
+
+    .stage-number {
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .stage h2 {
+        margin: 14px 0 0;
+        font-size: 16px;
+    }
+
+    .stage p {
+        margin: 8px 0 0;
+        color: var(--text-soft);
+        font-size: 12px;
+        line-height: 1.55;
+    }
+
+    .factory-flow {
+        margin-top: 42px;
+        padding: 26px;
+        background: var(--charcoal);
+        border-radius: 16px;
+        color: var(--white);
+    }
+
+    .flow-label {
+        color: var(--blue-light);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .factory-flow h2 {
+        margin: 10px 0 0;
+        font-size: 22px;
+    }
+
+    .flow {
+        margin-top: 24px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .flow-step {
+        padding: 9px 12px;
+        border: 1px solid rgba(255,255,255,.14);
+        border-radius: 8px;
+        background: rgba(255,255,255,.06);
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+    .arrow {
+        color: var(--blue-light);
+        font-weight: 900;
+    }
+
+    @media (max-width: 800px) {
+        .topbar {
+            padding: 0 18px;
+        }
+
+        .page {
+            padding: 40px 18px 60px;
+        }
+
+        .pipeline {
+            grid-template-columns: 1fr;
+        }
+
+        .flow {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .arrow {
+            text-align: center;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        SPF <span>Studio Inc.</span>
+    </div>
+
+    <button
+        class="back-button"
+        onclick="window.location.href='/'"
+    >
+        ← Command Center
+    </button>
+
+</header>
+
+
+<main class="page">
+
+    <div class="eyebrow">
+        SPF FACTORY
+    </div>
+
+    <h1>
+        Build Products That Matter.
+    </h1>
+
+    <p class="intro">
+        The product-building environment where validated
+        ideas are transformed into real, testable and
+        deployable products.
+    </p>
+
+    <div class="status">
+        FACTORY WORKSPACE ACTIVE
+    </div>
+
+
+    <section class="pipeline">
+
+        <div class="stage">
+            <div class="stage-number">01</div>
+            <h2>Product Definition</h2>
+            <p>
+                Turn a validated idea into a clear
+                product concept, scope and requirements.
+            </p>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">02</div>
+            <h2>Architecture</h2>
+            <p>
+                Define the technology, data, workflows
+                and structure required to build the product.
+            </p>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">03</div>
+            <h2>Build</h2>
+            <p>
+                Develop the product using the appropriate
+                tools, systems and AI-assisted workflows.
+            </p>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">04</div>
+            <h2>Test</h2>
+            <p>
+                Validate functionality, usability,
+                reliability and product requirements.
+            </p>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">05</div>
+            <h2>Deploy</h2>
+            <p>
+                Prepare the product for real users,
+                production environments and release.
+            </p>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">06</div>
+            <h2>Improve</h2>
+            <p>
+                Use real-world feedback, evidence and
+                performance data to continuously improve.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="factory-flow">
+
+        <div class="flow-label">
+            PRODUCT FACTORY PIPELINE
+        </div>
+
+        <h2>
+            From validated idea to working product.
+        </h2>
+
+        <div class="flow">
+
+            <div class="flow-step">Idea</div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-step">Product</div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-step">Build</div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-step">Test</div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-step">Deploy</div>
+
+            <div class="arrow">→</div>
+
+            <div class="flow-step">Improve</div>
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>

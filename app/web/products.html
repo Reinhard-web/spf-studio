@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPF Studio Inc. — Products</title>
+
+<style>
+    :root {
+        --charcoal: #111827;
+        --charcoal-soft: #1F2937;
+        --slate: #374151;
+        --blue: #4F7CFF;
+        --blue-light: #6EA8FE;
+        --blue-soft: #EEF4FF;
+        --amber: #F59E0B;
+        --amber-soft: #FFF7E6;
+        --background: #F8FAFC;
+        --white: #FFFFFF;
+        --text: #172033;
+        --text-soft: #667085;
+        --border: #E5E7EB;
+        --success: #16A34A;
+        --success-soft: #ECFDF3;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: var(--background);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .topbar {
+        height: 64px;
+        padding: 0 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+        font-size: 15px;
+        font-weight: 900;
+        letter-spacing: .3px;
+    }
+
+    .workspace-label {
+        color: var(--text-soft);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .container {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 42px 28px 70px;
+    }
+
+    .back {
+        display: inline-flex;
+        margin-bottom: 36px;
+        color: var(--text-soft);
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .back:hover {
+        color: var(--blue);
+    }
+
+    .eyebrow {
+        margin-bottom: 12px;
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1.8px;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 42px;
+        line-height: 1.08;
+        letter-spacing: -1.5px;
+    }
+
+    .hero-text {
+        max-width: 680px;
+        margin: 16px 0 28px;
+        color: var(--text-soft);
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .status {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: var(--success-soft);
+        color: var(--success);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .section {
+        margin-top: 54px;
+    }
+
+    .section-heading {
+        margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+        margin: 0;
+        font-size: 22px;
+    }
+
+    .section-heading p {
+        margin: 7px 0 0;
+        color: var(--text-soft);
+        font-size: 13px;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .product-card {
+        padding: 22px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        transition: .2s ease;
+    }
+
+    .product-card:hover {
+        border-color: var(--blue-light);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(17, 24, 39, .06);
+    }
+
+    .number {
+        margin-bottom: 16px;
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1px;
+    }
+
+    .product-card h3 {
+        margin: 0;
+        font-size: 15px;
+    }
+
+    .product-card p {
+        margin: 9px 0 18px;
+        color: var(--text-soft);
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 5px 8px;
+        border-radius: 6px;
+        background: var(--blue-soft);
+        color: var(--blue);
+        font-size: 9px;
+        font-weight: 900;
+        letter-spacing: .7px;
+    }
+
+    .dark-panel {
+        margin-top: 24px;
+        padding: 30px;
+        background: var(--charcoal);
+        border-radius: 16px;
+        color: var(--white);
+    }
+
+    .dark-label {
+        margin-bottom: 10px;
+        color: var(--blue-light);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+    }
+
+    .dark-panel h2 {
+        margin: 0;
+        font-size: 25px;
+    }
+
+    .dark-panel p {
+        max-width: 650px;
+        margin: 10px 0 0;
+        color: #CBD5E1;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .product-flow {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-top: 26px;
+    }
+
+    .flow-item {
+        padding: 10px 13px;
+        background: var(--charcoal-soft);
+        border: 1px solid #374151;
+        border-radius: 8px;
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+    .arrow {
+        color: var(--blue-light);
+        font-weight: 900;
+    }
+
+    .principle {
+        margin-top: 24px;
+        padding: 22px;
+        background: var(--amber-soft);
+        border: 1px solid #FDE68A;
+        border-radius: 14px;
+    }
+
+    .principle-label {
+        margin-bottom: 7px;
+        color: var(--amber);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 1.3px;
+    }
+
+    .principle strong {
+        font-size: 16px;
+    }
+
+    @media (max-width: 800px) {
+        .topbar {
+            padding: 0 18px;
+        }
+
+        .container {
+            padding: 30px 18px 55px;
+        }
+
+        h1 {
+            font-size: 34px;
+        }
+
+        .product-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .workspace-label {
+            display: none;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="brand">SPF Studio Inc.</div>
+    <div class="workspace-label">Products Workspace</div>
+</header>
+
+<main class="container">
+
+<a href="/" class="back">← Command Center</a>
+
+<div class="eyebrow">SPF PRODUCTS</div>
+
+<h1>Turn Builds Into Products.</h1>
+
+<p class="hero-text">
+    The Products workspace manages the products SPF creates,
+    from their definition and development through release,
+    ownership, improvement and future growth.
+</p>
+
+<div class="status">
+    PRODUCTS WORKSPACE ACTIVE
+</div>
+
+<section class="section">
+
+    <div class="section-heading">
+        <h2>Product System</h2>
+        <p>
+            A product becomes a real asset when it can be built,
+            delivered, used, improved and scaled.
+        </p>
+    </div>
+
+    <div class="product-grid">
+
+        <div class="product-card">
+            <div class="number">01</div>
+            <h3>Product Definition</h3>
+            <p>
+                Define the product, its users, value proposition,
+                capabilities and intended outcome.
+            </p>
+            <span class="badge">READY</span>
+        </div>
+
+        <div class="product-card">
+            <div class="number">02</div>
+            <h3>Product Design</h3>
+            <p>
+                Shape the user experience, workflows,
+                architecture and product requirements.
+            </p>
+            <span class="badge">READY</span>
+        </div>
+
+        <div class="product-card">
+            <div class="number">03</div>
+            <h3>Product Build</h3>
+            <p>
+                Coordinate development and turn the approved
+                product definition into a working system.
+            </p>
+            <span class="badge">READY</span>
+        </div>
+
+        <div class="product-card">
+            <div class="number">04</div>
+            <h3>Product Testing</h3>
+            <p>
+                Validate functionality, usability, reliability
+                and the product's real-world performance.
+            </p>
+            <span class="badge">READY</span>
+        </div>
+
+        <div class="product-card">
+            <div class="number">05</div>
+            <h3>Product Release</h3>
+            <p>
+                Prepare the product for launch, users,
+                distribution, commercialization and support.
+            </p>
+            <span class="badge">READY</span>
+        </div>
+
+        <div class="product-card">
+            <div class="number">06</div>
+            <h3>Product Growth</h3>
+            <p>
+                Use feedback, evidence and market signals
+                to continuously improve and expand the product.
+            </p>
+            <span class="badge">READY</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="dark-panel">
+
+    <div class="dark-label">PRODUCT LIFECYCLE</div>
+
+    <h2>From concept to lasting product.</h2>
+
+    <p>
+        SPF connects product creation to a continuous system
+        where products are built, released, operated, measured
+        and improved over time.
+    </p>
+
+    <div class="product-flow">
+        <div class="flow-item">Concept</div>
+        <div class="arrow">→</div>
+        <div class="flow-item">Definition</div>
+        <div class="arrow">→</div>
+        <div class="flow-item">Design</div>
+        <div class="arrow">→</div>
+        <div class="flow-item">Build</div>
+        <div class="arrow">→</div>
+        <div class="flow-item">Test</div>
+        <div class="arrow">→</div>
+        <div class="flow-item">Launch</div>
+        <div class="arrow">→</div>
+        <div class="flow-item">Grow</div>
+    </div>
+
+</section>
+
+<div class="principle">
+    <div class="principle-label">PRODUCT PRINCIPLE</div>
+    <strong>Build products that create lasting value.</strong>
+</div>
+
+</main>
+
+</body>
+</html>
