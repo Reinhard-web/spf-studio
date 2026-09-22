@@ -891,6 +891,55 @@
             line-height: 1.5;
         }
 
+                .labs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .lab-card {
+            position: relative;
+            padding: 18px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: .2s ease;
+        }
+
+        .lab-card:hover {
+            border-color: var(--blue-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(17, 24, 39, .06);
+        }
+
+        .lab-card-number {
+            margin-bottom: 14px;
+            color: var(--blue);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .lab-card h3 {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .lab-card p {
+            margin: 7px 0 0;
+            color: var(--text-soft);
+            font-size: 11px;
+            line-height: 1.55;
+        }
+
+        @media (max-width: 800px) {
+            .labs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* OPERATIONS */
 
         .operations-grid {
@@ -2202,6 +2251,46 @@
                     </div>
 
                 </div>
+                
+                <div class="labs-grid">
+
+    <div class="lab-card">
+        <div class="lab-card-number">01</div>
+        <h3>AI Agents</h3>
+        <p>Design and test intelligent agents for real workflows.</p>
+    </div>
+
+    <div class="lab-card">
+        <div class="lab-card-number">02</div>
+        <h3>Automation</h3>
+        <p>Prototype systems that reduce repetitive work.</p>
+    </div>
+
+    <div class="lab-card">
+        <div class="lab-card-number">03</div>
+        <h3>Voice &amp; Interaction</h3>
+        <p>Explore voice interfaces and new ways to interact with technology.</p>
+    </div>
+
+    <div class="lab-card">
+        <div class="lab-card-number">04</div>
+        <h3>UX &amp; Prototypes</h3>
+        <p>Turn early ideas into testable product experiences.</p>
+    </div>
+
+    <div class="lab-card">
+        <div class="lab-card-number">05</div>
+        <h3>Emerging Technology</h3>
+        <p>Investigate technologies that could shape future products.</p>
+    </div>
+
+    <div class="lab-card">
+        <div class="lab-card-number">06</div>
+        <h3>Experiments</h3>
+        <p>Run controlled experiments and capture what is learned.</p>
+    </div>
+
+</div>
 
             </section>
 
