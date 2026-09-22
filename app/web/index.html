@@ -761,7 +761,7 @@
         }
 
         .lifecycle-step::after {
-            content: "Ã¢â€ â€™";
+            content: "→";
             position: absolute;
             right: -8px;
             top: 50%;
@@ -889,55 +889,6 @@
             color: var(--text-soft);
             font-size: 11px;
             line-height: 1.5;
-        }
-
-                .labs-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            margin-top: 18px;
-        }
-
-        .lab-card {
-            position: relative;
-            padding: 18px;
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            transition: .2s ease;
-        }
-
-        .lab-card:hover {
-            border-color: var(--blue-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(17, 24, 39, .06);
-        }
-
-        .lab-card-number {
-            margin-bottom: 14px;
-            color: var(--blue);
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        .lab-card h3 {
-            margin: 0;
-            font-size: 14px;
-            font-weight: 800;
-        }
-
-        .lab-card p {
-            margin: 7px 0 0;
-            color: var(--text-soft);
-            font-size: 11px;
-            line-height: 1.55;
-        }
-
-        @media (max-width: 800px) {
-            .labs-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* OPERATIONS */
@@ -1145,7 +1096,7 @@
             }
 
             .lifecycle-step::after {
-                content: "Ã¢â€ â€œ";
+                content: "↓";
                 right: auto;
                 top: auto;
                 bottom: -10px;
@@ -1226,7 +1177,7 @@
                 class="active"
                 onclick="showCommandCenter(); return false;"
             >
-                <span class="nav-icon">Ã¢Å’â€š</span>
+                <span class="nav-icon">⌂</span>
                 Command Center
             </a>
 
@@ -1263,7 +1214,7 @@
                 href="#lifecycle"
                 onclick="openSection('lifecycle'); return false;"
             >
-                <span class="nav-icon">Ã¢â€ â€™</span>
+                <span class="nav-icon">→</span>
                 Build & Launch
             </a>
 
@@ -1295,7 +1246,7 @@
                 href="#products"
                 onclick="openSection('products'); return false;"
             >
-                <span class="nav-icon">Ã¢â€”â€ </span>
+                <span class="nav-icon">◆</span>
                 Products
             </a>
 
@@ -1303,7 +1254,7 @@
                 href="#tasks"
                 onclick="openSection('tasks'); return false;"
             >
-                <span class="nav-icon">Ã¢Å“â€œ</span>
+                <span class="nav-icon">✓</span>
                 Tasks
             </a>
 
@@ -1311,7 +1262,7 @@
                 href="#analytics"
                 onclick="openSection('analytics'); return false;"
             >
-                <span class="nav-icon">Ã¢â€“Â¥</span>
+                <span class="nav-icon">▥</span>
                 Analytics
             </a>
 
@@ -1319,7 +1270,7 @@
                 href="#settings"
                 onclick="openSection('settings'); return false;"
             >
-                <span class="nav-icon">Ã¢Å¡â„¢</span>
+                <span class="nav-icon">⚙</span>
                 Settings
             </a>
 
@@ -1456,7 +1407,7 @@
                         </div>
 
                         <p class="build-hint">
-                            Goal Ã¢â€ â€™ Opportunity Ã¢â€ â€™ Project Ã¢â€ â€™ Tasks Ã¢â€ â€™ Product Ã¢â€ â€™ Launch
+                            Goal → Opportunity → Project → Tasks → Product → Launch
                         </p>
 
                     </div>
@@ -1834,7 +1785,7 @@
                                 </div>
 
                                 <div class="overview-icon">
-                                    Ã¢â€”â€ 
+                                    ◆
                                 </div>
 
                             </div>
@@ -1884,7 +1835,7 @@
                                 </div>
 
                                 <div class="overview-icon">
-                                    Ã¢â€ â€˜
+                                    ↑
                                 </div>
 
                             </div>
@@ -2031,7 +1982,7 @@
                         >
 
                             <div class="core-icon">
-                                Ã¢â€ â€™
+                                →
                             </div>
 
                             <h3>
@@ -2207,7 +2158,7 @@
                     class="section-back"
                     onclick="showCommandCenter()"
                 >
-                    Ã¢â€ Â Command Center
+                    ← Command Center
                 </button>
 
                 <div class="section-heading">
@@ -2251,46 +2202,6 @@
                     </div>
 
                 </div>
-                
-                <div class="labs-grid">
-
-    <div class="lab-card">
-        <div class="lab-card-number">01</div>
-        <h3>AI Agents</h3>
-        <p>Design and test intelligent agents for real workflows.</p>
-    </div>
-
-    <div class="lab-card">
-        <div class="lab-card-number">02</div>
-        <h3>Automation</h3>
-        <p>Prototype systems that reduce repetitive work.</p>
-    </div>
-
-    <div class="lab-card">
-        <div class="lab-card-number">03</div>
-        <h3>Voice &amp; Interaction</h3>
-        <p>Explore voice interfaces and new ways to interact with technology.</p>
-    </div>
-
-    <div class="lab-card">
-        <div class="lab-card-number">04</div>
-        <h3>UX &amp; Prototypes</h3>
-        <p>Turn early ideas into testable product experiences.</p>
-    </div>
-
-    <div class="lab-card">
-        <div class="lab-card-number">05</div>
-        <h3>Emerging Technology</h3>
-        <p>Investigate technologies that could shape future products.</p>
-    </div>
-
-    <div class="lab-card">
-        <div class="lab-card-number">06</div>
-        <h3>Experiments</h3>
-        <p>Run controlled experiments and capture what is learned.</p>
-    </div>
-
-</div>
 
             </section>
 
@@ -2306,7 +2217,7 @@
                     class="section-back"
                     onclick="showCommandCenter()"
                 >
-                    Ã¢â€ Â Command Center
+                    ← Command Center
                 </button>
 
                 <div class="section-heading">
@@ -2392,7 +2303,7 @@
                     class="section-back"
                     onclick="showCommandCenter()"
                 >
-                    Ã¢â€ Â Command Center
+                    ← Command Center
                 </button>
 
                 <div class="section-heading">
@@ -2536,7 +2447,168 @@
                                 </div>
 
 
-                
+                <!-- FUTURE INTELLIGENCE -->
+
+                <div
+                    id="futureIntelligence"
+                    class="future-intelligence-panel"
+                    style="display: none;"
+                >
+
+                    <div class="section-eyebrow">
+                        FUTURE INTELLIGENCE
+                    </div>
+
+                    <h3>
+                        See what's coming. Build what's next.
+                    </h3>
+
+                    <p class="panel-subtitle">
+                        SPF analyzes emerging signals, trends, needs and opportunities
+                        to identify what may be worth investigating.
+                    </p>
+
+
+                    <div class="future-intelligence-grid">
+
+
+                        <div class="future-intelligence-card">
+
+                            <div class="future-card-label">
+                                LIVE SIGNALS
+                            </div>
+
+                            <h4>
+                                Emerging developments
+                            </h4>
+
+                            <p>
+                                Monitor signals that may indicate changing needs,
+                                technologies or markets.
+                            </p>
+
+                        </div>
+
+
+                        <div class="future-intelligence-card">
+
+                            <div class="future-card-label">
+                                TREND RADAR
+                            </div>
+
+                            <h4>
+                                What's gaining momentum
+                            </h4>
+
+                            <p>
+                                Identify trends that could create new opportunities.
+                            </p>
+
+                        </div>
+
+
+                        <div class="future-intelligence-card">
+
+                            <div class="future-card-label">
+                                EMERGING NEEDS
+                            </div>
+
+                            <h4>
+                                What people may need next
+                            </h4>
+
+                            <p>
+                                Surface emerging problems and unmet needs worth exploring.
+                            </p>
+
+                        </div>
+
+
+                        <div class="future-intelligence-card">
+
+                            <div class="future-card-label">
+                                OPPORTUNITY MAP
+                            </div>
+
+                            <h4>
+                                Where opportunities are forming
+                            </h4>
+
+                            <p>
+                                Connect signals, trends and needs into potential
+                                opportunity areas.
+                            </p>
+
+                        </div>
+
+
+                        <div class="future-intelligence-card">
+
+                            <div class="future-card-label">
+                                PRODUCT CANDIDATES
+                            </div>
+
+                            <h4>
+                                What could be built
+                            </h4>
+
+                            <p>
+                                Generate potential products from qualified opportunity
+                                signals.
+                            </p>
+
+                        </div>
+
+
+                        <div class="future-intelligence-card">
+
+                            <div class="future-card-label">
+                                QUALIFICATION ENGINE
+                            </div>
+
+                            <h4>
+                                Assess what deserves attention
+                            </h4>
+
+                            <p>
+                                AI-assisted analysis of relevance, potential, evidence
+                                and risk before human review.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="future-human-review">
+
+                        <div class="future-card-label">
+                            HUMAN REVIEW
+                        </div>
+
+                        <h4>
+                            Human decision gate
+                        </h4>
+
+                        <p>
+                            AI identifies and assesses possibilities. A human decides
+                            what moves into the SPF Innovation pipeline.
+                        </p>
+
+                        <button
+                            class="secondary-button"
+                            type="button"
+                        >
+                            Review Opportunities
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            </section>
 
 
             <!-- BUILD & LAUNCH -->
@@ -2550,13 +2622,13 @@
                     class="section-back"
                     onclick="showCommandCenter()"
                 >
-                    Ã¢â€ Â Command Center
+                    ← Command Center
                 </button>
 
                 <div class="section-heading">
 
                     <div>
-                        <h2>Build Ã¢â€ â€™ Launch Ã¢â€ â€™ Improve</h2>
+                        <h2>Build → Launch → Improve</h2>
 
                         <p>
                             The execution lifecycle after an idea enters production.
@@ -2672,7 +2744,7 @@
                     class="section-back"
                     onclick="showCommandCenter()"
                 >
-                    Ã¢â€ Â Command Center
+                    ← Command Center
                 </button>
 
                 <div class="section-heading">
@@ -2692,7 +2764,7 @@
                     <div class="operation-card">
 
                         <div class="operation-icon">
-                            Ã¢â€”â€°
+                            ◉
                         </div>
 
                         <h3>
@@ -2710,7 +2782,7 @@
                     <div class="operation-card">
 
                         <div class="operation-icon">
-                            Ã¢â€ â€”
+                            ↗
                         </div>
 
                         <h3>
@@ -2728,7 +2800,7 @@
                     <div class="operation-card">
 
                         <div class="operation-icon">
-                            Ã¢â€ Â»
+                            ↻
                         </div>
 
                         <h3>
@@ -2758,7 +2830,7 @@
                     class="section-back"
                     onclick="showCommandCenter()"
                 >
-                    Ã¢â€ Â Command Center
+                    ← Command Center
                 </button>
 
                 <div class="section-heading">
@@ -2817,7 +2889,7 @@
                     class="section-back"
                     onclick="showCommandCenter()"
                 >
-                    Ã¢â€ Â Command Center
+                    ← Command Center
                 </button>
 
                 <div class="section-heading">
@@ -2876,7 +2948,7 @@
                     class="section-back"
                     onclick="showCommandCenter()"
                 >
-                    Ã¢â€ Â Command Center
+                    ← Command Center
                 </button>
 
                 <div class="section-heading">
@@ -2935,7 +3007,7 @@
                     class="section-back"
                     onclick="showCommandCenter()"
                 >
-                    Ã¢â€ Â Command Center
+                    ← Command Center
                 </button>
 
                 <div class="section-heading">
@@ -3129,7 +3201,7 @@
                     class="section-back"
                     onclick="showCommandCenter()"
                 >
-                    Ã¢â€ Â Command Center
+                    ← Command Center
                 </button>
 
                 <div class="section-heading">
@@ -3420,6 +3492,31 @@
 
     function openStudio(studioName) {
 
+                const futurePanel =
+            document.getElementById(
+                "futureIntelligence"
+            );
+
+        if (futurePanel) {
+            futurePanel.style.display = "none";
+        }
+
+        if (studioName === "Future") {
+
+            if (futurePanel) {
+
+                futurePanel.style.display = "block";
+
+                futurePanel.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+            return;
+        }
+
         const message =
             document.getElementById(
                 "studioMessage"
@@ -3614,4 +3711,3 @@
 
 </body>
 </html>
-
