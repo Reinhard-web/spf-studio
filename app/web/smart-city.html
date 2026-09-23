@@ -1,0 +1,4596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SPF Studio Inc. — Smart City</title>
+
+    <style>
+        :root {
+            --charcoal: #111827;
+            --charcoal-soft: #1F2937;
+            --slate: #374151;
+
+            --blue: #4F7CFF;
+            --blue-light: #6EA8FE;
+            --blue-soft: #EEF4FF;
+
+            --amber: #F59E0B;
+            --amber-soft: #FFF7E6;
+
+            --background: #F8FAFC;
+            --white: #FFFFFF;
+
+            --text: #172033;
+            --text-soft: #667085;
+
+            --border: #E5E7EB;
+
+            --success: #16A34A;
+            --success-soft: #ECFDF3;
+
+            --danger: #DC2626;
+            --danger-soft: #FEF2F2;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: var(--background);
+            color: var(--text);
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+
+        .topbar {
+            height: 72px;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 32px;
+
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+
+            background: var(--charcoal);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .brand-name {
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .brand-section {
+            color: var(--text-soft);
+            font-size: 12px;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .command-link {
+            color: var(--text-soft);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 9px 12px;
+            border-radius: 8px;
+        }
+
+        .command-link:hover {
+            background: var(--background);
+            color: var(--text);
+        }
+
+        /* LAYOUT */
+
+        .shell {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 32px 70px;
+        }
+
+        /* HERO */
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.7fr);
+            gap: 28px;
+
+            margin-bottom: 34px;
+        }
+
+        .eyebrow {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            margin: 0;
+
+            font-size: clamp(38px, 5vw, 64px);
+            line-height: 0.98;
+            letter-spacing: -0.055em;
+        }
+
+        .hero-copy {
+            max-width: 720px;
+
+            margin-top: 20px;
+
+            color: var(--text-soft);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .vision-card {
+            background: var(--charcoal);
+            color: white;
+
+            border-radius: 18px;
+
+            padding: 28px;
+
+            min-height: 230px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .vision-label {
+            color: #AFC5FF;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .vision-title {
+            font-size: 24px;
+            font-weight: 750;
+            letter-spacing: -0.03em;
+
+            margin: 22px 0 10px;
+        }
+
+        .vision-copy {
+            color: #D1D5DB;
+            font-size: 14px;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* DASHBOARD */
+
+        .section-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 16px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+
+            font-size: 22px;
+            letter-spacing: -0.025em;
+        }
+
+        .section-heading p {
+            margin: 5px 0 0;
+
+            color: var(--text-soft);
+            font-size: 13px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .module-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+
+            padding: 22px;
+
+            transition:
+                transform 0.15s ease,
+                border-color 0.15s ease,
+                box-shadow 0.15s ease;
+        }
+
+        .module-card:hover {
+            transform: translateY(-2px);
+            border-color: #CBD5E1;
+
+            box-shadow:
+                0 8px 24px rgba(15, 23, 42, 0.06);
+        }
+
+        .module-card.active {
+            border-color: #B8CAFF;
+            background: #FCFDFF;
+        }
+
+        .module-icon {
+            width: 44px;
+            height: 44px;
+
+            border-radius: 12px;
+
+            background: var(--blue-soft);
+            color: var(--blue);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+            font-weight: 800;
+
+            margin-bottom: 18px;
+        }
+
+        .module-card h3 {
+            margin: 0 0 7px;
+
+            font-size: 17px;
+            letter-spacing: -0.02em;
+        }
+
+        .module-card p {
+            margin: 0;
+
+            color: var(--text-soft);
+
+            font-size: 13px;
+            line-height: 1.6;
+
+            min-height: 42px;
+        }
+
+        .module-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-top: 20px;
+            padding-top: 15px;
+
+            border-top: 1px solid var(--border);
+        }
+
+        .module-count {
+            font-size: 12px;
+            font-weight: 750;
+            color: var(--text);
+        }
+
+        .open-module {
+            border: 0;
+            background: transparent;
+
+            color: var(--blue);
+
+            font-size: 12px;
+            font-weight: 750;
+
+            padding: 0;
+        }
+
+        /* FLOW */
+
+        .flow-section {
+            margin-top: 42px;
+        }
+
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 0;
+
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+
+            overflow: hidden;
+        }
+
+        .flow-step {
+            min-height: 105px;
+
+            padding: 20px 16px;
+
+            border-right: 1px solid var(--border);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+
+            position: relative;
+        }
+
+        .flow-step:last-child {
+            border-right: 0;
+        }
+
+        .flow-number {
+            color: var(--blue);
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .flow-name {
+            font-size: 13px;
+            font-weight: 750;
+        }
+
+        .flow-arrow {
+            position: absolute;
+            right: -5px;
+            top: 50%;
+
+            width: 10px;
+            height: 10px;
+
+            transform: translateY(-50%) rotate(45deg);
+
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+
+            z-index: 2;
+        }
+
+        /* WORKSPACE */
+
+        .workspace {
+            margin-top: 48px;
+            display: none;
+        }
+
+        .workspace.visible {
+            display: block;
+        }
+
+        .workspace-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 20px;
+        }
+
+        .workspace-title h2 {
+            margin: 0;
+
+            font-size: 26px;
+            letter-spacing: -0.035em;
+        }
+
+        .workspace-title p {
+            margin: 7px 0 0;
+
+            color: var(--text-soft);
+            font-size: 13px;
+        }
+
+        .workspace-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn {
+            border: 1px solid var(--border);
+
+            background: var(--white);
+            color: var(--text);
+
+            border-radius: 9px;
+
+            padding: 10px 14px;
+
+            font-size: 13px;
+            font-weight: 750;
+        }
+
+        .btn:hover {
+            border-color: #CBD5E1;
+            background: #F9FAFB;
+        }
+
+        .btn-primary {
+            border-color: var(--blue);
+            background: var(--blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            border-color: var(--blue);
+            background: #416CE0;
+        }
+
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.7fr);
+            gap: 18px;
+        }
+
+        .panel {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 22px;
+        }
+
+        .panel h3 {
+            margin: 0;
+
+            font-size: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .panel-description {
+            color: var(--text-soft);
+            font-size: 12px;
+            line-height: 1.55;
+
+            margin: 5px 0 18px;
+        }
+
+        /* FORMS */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: 750;
+            color: var(--slate);
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+
+            border: 1px solid var(--border);
+            border-radius: 9px;
+
+            padding: 11px 12px;
+
+            background: white;
+            color: var(--text);
+
+            outline: none;
+
+            font-size: 13px;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--blue-light);
+
+            box-shadow:
+                0 0 0 3px rgba(79, 124, 255, 0.10);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+
+            margin-top: 16px;
+        }
+
+        /* RECORDS */
+
+        .records {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .record {
+            border: 1px solid var(--border);
+            border-radius: 11px;
+
+            padding: 14px;
+
+            background: white;
+        }
+
+        .record-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            gap: 12px;
+        }
+
+        .record-title {
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .record-meta {
+            color: var(--text-soft);
+
+            font-size: 11px;
+            line-height: 1.55;
+
+            margin-top: 5px;
+        }
+
+        .record-description {
+            color: var(--slate);
+
+            font-size: 12px;
+            line-height: 1.55;
+
+            margin-top: 9px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+
+            border-radius: 999px;
+
+            padding: 4px 8px;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+        .badge-blue {
+            background: var(--blue-soft);
+            color: var(--blue);
+        }
+
+        .badge-green {
+            background: var(--success-soft);
+            color: var(--success);
+        }
+
+        .badge-amber {
+            background: var(--amber-soft);
+            color: #B45309;
+        }
+
+        .badge-gray {
+            background: #F3F4F6;
+            color: #4B5563;
+        }
+
+        .empty-state {
+            border: 1px dashed #CBD5E1;
+            border-radius: 11px;
+
+            padding: 28px 18px;
+
+            text-align: center;
+
+            color: var(--text-soft);
+            font-size: 12px;
+        }
+
+        /* SIDE STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+
+            margin-bottom: 18px;
+        }
+
+        .stat {
+            border: 1px solid var(--border);
+            border-radius: 11px;
+
+            padding: 14px;
+        }
+
+        .stat-value {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        .stat-label {
+            color: var(--text-soft);
+
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .insight {
+            padding: 13px;
+
+            border-radius: 10px;
+
+            background: var(--blue-soft);
+
+            color: var(--slate);
+
+            font-size: 12px;
+            line-height: 1.6;
+
+            margin-top: 10px;
+        }
+
+        /* IMPACT */
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+
+            margin-top: 18px;
+        }
+
+        .impact-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            padding: 18px;
+        }
+
+        .impact-value {
+            font-size: 30px;
+            font-weight: 850;
+            letter-spacing: -0.05em;
+        }
+
+        .impact-label {
+            color: var(--text-soft);
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        /* NOTICE */
+
+        .notice {
+            display: none;
+
+            margin-bottom: 16px;
+
+            border: 1px solid #BFDBFE;
+            background: var(--blue-soft);
+
+            color: #1E3A8A;
+
+            border-radius: 10px;
+
+            padding: 11px 13px;
+
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .notice.visible {
+            display: block;
+        }
+
+        /* FOOTER */
+
+        footer {
+            max-width: 1400px;
+            margin: 0 auto;
+
+            padding: 0 32px 35px;
+
+            color: var(--text-soft);
+
+            font-size: 11px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .flow {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .flow-step:nth-child(3) {
+                border-right: 0;
+            }
+
+            .flow-step:nth-child(-n+3) {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .workspace-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 700px) {
+            .topbar {
+                padding: 0 18px;
+            }
+
+            .brand-section {
+                display: none;
+            }
+
+            .shell {
+                padding: 28px 18px 50px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-step,
+            .flow-step:nth-child(3) {
+                border-right: 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .flow-step:last-child {
+                border-bottom: 0;
+            }
+
+            .flow-arrow {
+                display: none;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .workspace-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            footer {
+                padding: 0 18px 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                SPF
+            </div>
+
+            <div class="brand-text">
+
+                <div class="brand-name">
+                    SPF Studio Inc.
+                </div>
+
+                <div class="brand-section">
+                    Smart City
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="top-actions">
+
+            <a
+                href="/"
+                class="command-link"
+            >
+                ← Command Center
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main class="shell">
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div>
+
+                <div class="eyebrow">
+                    Smart City
+                </div>
+
+                <h1>
+                    Building smarter cities.
+                </h1>
+
+                <p class="hero-copy">
+                    A structured environment for discovering urban challenges,
+                    developing practical solutions, building digital products,
+                    and measuring their real-world impact.
+                </p>
+
+            </div>
+
+
+            <div class="vision-card">
+
+                <div>
+
+                    <div class="vision-label">
+                        The vision
+                    </div>
+
+                    <div class="vision-title">
+                        From city signals to measurable impact.
+                    </div>
+
+                    <p class="vision-copy">
+                        Connect what is happening in cities with human needs,
+                        technology, innovation, practical projects, and
+                        measurable outcomes.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DASHBOARD -->
+
+        <section>
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Smart City Workspace
+                    </h2>
+
+                    <p>
+                        Move an urban insight from discovery to real-world impact.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <!-- CITY SIGNALS -->
+
+                <div class="module-card active">
+
+                    <div class="module-icon">
+                        01
+                    </div>
+
+                    <h3>
+                        City Signals
+                    </h3>
+
+                    <p>
+                        Capture observations, trends, signals and emerging
+                        conditions across the city.
+                    </p>
+
+                    <div class="module-footer">
+
+                        <span
+                            class="module-count"
+                            id="dashboardSignalsCount"
+                        >
+                            0 signals
+                        </span>
+
+                        <button
+                            class="open-module"
+                            onclick="openModule('signals')"
+                        >
+                            Open →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CHALLENGES -->
+
+                <div class="module-card">
+
+                    <div class="module-icon">
+                        02
+                    </div>
+
+                    <h3>
+                        Challenges
+                    </h3>
+
+                    <p>
+                        Turn important city signals into clearly defined
+                        problems and challenges.
+                    </p>
+
+                    <div class="module-footer">
+
+                        <span
+                            class="module-count"
+                            id="dashboardChallengesCount"
+                        >
+                            0 challenges
+                        </span>
+
+                        <button
+                            class="open-module"
+                            onclick="openModule('challenges')"
+                        >
+                            Open →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OPPORTUNITIES -->
+
+                <div class="module-card">
+
+                    <div class="module-icon">
+                        03
+                    </div>
+
+                    <h3>
+                        Opportunities
+                    </h3>
+
+                    <p>
+                        Identify practical opportunities created by urban
+                        challenges and emerging needs.
+                    </p>
+
+                    <div class="module-footer">
+
+                        <span
+                            class="module-count"
+                            id="dashboardOpportunitiesCount"
+                        >
+                            0 opportunities
+                        </span>
+
+                        <button
+                            class="open-module"
+                            onclick="openModule('opportunities')"
+                        >
+                            Open →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IDEAS -->
+
+                <div class="module-card">
+
+                    <div class="module-icon">
+                        04
+                    </div>
+
+                    <h3>
+                        Ideas
+                    </h3>
+
+                    <p>
+                        Develop concepts, products, services and interventions
+                        that respond to identified opportunities.
+                    </p>
+
+                    <div class="module-footer">
+
+                        <span
+                            class="module-count"
+                            id="dashboardIdeasCount"
+                        >
+                            0 ideas
+                        </span>
+
+                        <button
+                            class="open-module"
+                            onclick="openModule('ideas')"
+                        >
+                            Open →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROJECTS -->
+
+                <div class="module-card">
+
+                    <div class="module-icon">
+                        05
+                    </div>
+
+                    <h3>
+                        Projects
+                    </h3>
+
+                    <p>
+                        Turn selected ideas into structured projects that can
+                        be built, tested and deployed.
+                    </p>
+
+                    <div class="module-footer">
+
+                        <span
+                            class="module-count"
+                            id="dashboardProjectsCount"
+                        >
+                            0 projects
+                        </span>
+
+                        <button
+                            class="open-module"
+                            onclick="openModule('projects')"
+                        >
+                            Open →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMPACT -->
+
+                <div class="module-card">
+
+                    <div class="module-icon">
+                        06
+                    </div>
+
+                    <h3>
+                        Impact
+                    </h3>
+
+                    <p>
+                        Measure outcomes and understand what changes in the
+                        city as projects move into operation.
+                    </p>
+
+                    <div class="module-footer">
+
+                        <span
+                            class="module-count"
+                            id="dashboardImpactCount"
+                        >
+                            0 outcomes
+                        </span>
+
+                        <button
+                            class="open-module"
+                            onclick="openModule('impact')"
+                        >
+                            Open →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FLOW -->
+
+        <section class="flow-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Smart City Pipeline
+                    </h2>
+
+                    <p>
+                        A continuous journey from observation to measurable change.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="flow">
+
+                <div class="flow-step">
+
+                    <div class="flow-number">
+                        01
+                    </div>
+
+                    <div class="flow-name">
+                        City Signal
+                    </div>
+
+                    <div class="flow-arrow"></div>
+
+                </div>
+
+
+                <div class="flow-step">
+
+                    <div class="flow-number">
+                        02
+                    </div>
+
+                    <div class="flow-name">
+                        Challenge
+                    </div>
+
+                    <div class="flow-arrow"></div>
+
+                </div>
+
+
+                <div class="flow-step">
+
+                    <div class="flow-number">
+                        03
+                    </div>
+
+                    <div class="flow-name">
+                        Opportunity
+                    </div>
+
+                    <div class="flow-arrow"></div>
+
+                </div>
+
+
+                <div class="flow-step">
+
+                    <div class="flow-number">
+                        04
+                    </div>
+
+                    <div class="flow-name">
+                        Idea
+                    </div>
+
+                    <div class="flow-arrow"></div>
+
+                </div>
+
+
+                <div class="flow-step">
+
+                    <div class="flow-number">
+                        05
+                    </div>
+
+                    <div class="flow-name">
+                        Project
+                    </div>
+
+                    <div class="flow-arrow"></div>
+
+                </div>
+
+
+                <div class="flow-step">
+
+                    <div class="flow-number">
+                        06
+                    </div>
+
+                    <div class="flow-name">
+                        Impact
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- WORKSPACE -->
+
+        <section
+            id="workspace"
+            class="workspace"
+        >
+
+            <div
+                id="notice"
+                class="notice"
+            ></div>
+
+
+            <!-- CITY SIGNALS -->
+
+            <div
+                id="signalsWorkspace"
+                class="module-workspace"
+                style="display:none;"
+            >
+
+                <div class="workspace-header">
+
+                    <div class="workspace-title">
+
+                        <h2>
+                            City Signals
+                        </h2>
+
+                        <p>
+                            Capture what is happening across the city.
+                        </p>
+
+                    </div>
+
+                    <div class="workspace-actions">
+
+                        <button
+                            class="btn"
+                            onclick="closeWorkspace()"
+                        >
+                            Dashboard
+                        </button>
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="showSignalForm()"
+                        >
+                            + Add City Signal
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="workspace-grid">
+
+                    <div class="panel">
+
+                        <h3>
+                            Signals
+                        </h3>
+
+                        <p class="panel-description">
+                            Record observations, trends, changes, incidents
+                            and other information that may reveal an emerging
+                            urban challenge.
+                        </p>
+
+
+                        <div
+                            id="signalForm"
+                            style="display:none;"
+                        >
+
+                            <form
+                                onsubmit="saveSignal(event)"
+                            >
+
+                                <div class="form-grid">
+
+                                    <div class="form-group">
+
+                                        <label for="signal">
+                                            Signal
+                                        </label>
+
+                                        <input
+                                            id="signal"
+                                            required
+                                            placeholder="What are you noticing?"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="signalCategory">
+                                            Category
+                                        </label>
+
+                                        <select id="signalCategory">
+
+                                            <option>
+                                                Mobility
+                                            </option>
+
+                                            <option>
+                                                Environment
+                                            </option>
+
+                                            <option>
+                                                Infrastructure
+                                            </option>
+
+                                            <option>
+                                                Commerce
+                                            </option>
+
+                                            <option>
+                                                Public Services
+                                            </option>
+
+                                            <option>
+                                                Community
+                                            </option>
+
+                                            <option>
+                                                Technology
+                                            </option>
+
+                                            <option>
+                                                Other
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="form-group full">
+
+                                        <label for="observation">
+                                            Observation
+                                        </label>
+
+                                        <textarea
+                                            id="observation"
+                                            required
+                                            placeholder="Describe what is happening..."
+                                        ></textarea>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="signalLocation">
+                                            Location
+                                        </label>
+
+                                        <input
+                                            id="signalLocation"
+                                            placeholder="Area, neighbourhood or city"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="signalSource">
+                                            Source
+                                        </label>
+
+                                        <input
+                                            id="signalSource"
+                                            placeholder="Source or reference"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-actions">
+
+                                    <button
+                                        type="button"
+                                        class="btn"
+                                        onclick="hideSignalForm()"
+                                    >
+                                        Cancel
+                                    </button>
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                    >
+                                        Save Signal
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+
+                        <div
+                            id="signalsList"
+                            class="records"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <h3>
+                            Signal Intelligence
+                        </h3>
+
+                        <p class="panel-description">
+                            A high-level view of what the collected signals
+                            are telling us.
+                        </p>
+
+
+                        <div class="stats">
+
+                            <div class="stat">
+
+                                <div
+                                    class="stat-value"
+                                    id="signalTotal"
+                                >
+                                    0
+                                </div>
+
+                                <div class="stat-label">
+                                    Signals
+                                </div>
+
+                            </div>
+
+
+                            <div class="stat">
+
+                                <div
+                                    class="stat-value"
+                                    id="signalCategories"
+                                >
+                                    0
+                                </div>
+
+                                <div class="stat-label">
+                                    Categories
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="insight">
+                            Capture enough signals to identify recurring
+                            patterns and potential city challenges.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHALLENGES -->
+
+            <div
+                id="challengesWorkspace"
+                class="module-workspace"
+                style="display:none;"
+            >
+
+                <div class="workspace-header">
+
+                    <div class="workspace-title">
+
+                        <h2>
+                            Challenges
+                        </h2>
+
+                        <p>
+                            Define the urban problems that require attention.
+                        </p>
+
+                    </div>
+
+                    <div class="workspace-actions">
+
+                        <button
+                            class="btn"
+                            onclick="closeWorkspace()"
+                        >
+                            Dashboard
+                        </button>
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="showForm('challengeForm')"
+                        >
+                            + Add Challenge
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="workspace-grid">
+
+                    <div class="panel">
+
+                        <h3>
+                            City Challenges
+                        </h3>
+
+                        <p class="panel-description">
+                            Turn observations and signals into clearly defined
+                            problems worth solving.
+                        </p>
+
+
+                        <div
+                            id="challengeForm"
+                            style="display:none;"
+                        >
+
+                            <form
+                                onsubmit="saveChallenge(event)"
+                            >
+
+                                <div class="form-grid">
+
+                                    <div class="form-group full">
+
+                                        <label for="challengeTitle">
+                                            Challenge
+                                        </label>
+
+                                        <input
+                                            id="challengeTitle"
+                                            required
+                                            placeholder="What urban problem needs to be solved?"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group full">
+
+                                        <label for="challengeDescription">
+                                            Description
+                                        </label>
+
+                                        <textarea
+                                            id="challengeDescription"
+                                            required
+                                            placeholder="Describe the problem, who experiences it and why it matters."
+                                        ></textarea>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="challengeLocation">
+                                            Location
+                                        </label>
+
+                                        <input
+                                            id="challengeLocation"
+                                            placeholder="Where does it occur?"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="challengeCategory">
+                                            Category
+                                        </label>
+
+                                        <select id="challengeCategory">
+
+                                            <option>
+                                                Mobility
+                                            </option>
+
+                                            <option>
+                                                Environment
+                                            </option>
+
+                                            <option>
+                                                Infrastructure
+                                            </option>
+
+                                            <option>
+                                                Commerce
+                                            </option>
+
+                                            <option>
+                                                Public Services
+                                            </option>
+
+                                            <option>
+                                                Community
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-actions">
+
+                                    <button
+                                        type="button"
+                                        class="btn"
+                                        onclick="hideForm('challengeForm')"
+                                    >
+                                        Cancel
+                                    </button>
+
+                                    <button
+                                        class="btn btn-primary"
+                                        type="submit"
+                                    >
+                                        Save Challenge
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+
+                        <div
+                            id="challengesList"
+                            class="records"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <h3>
+                            Challenge Intelligence
+                        </h3>
+
+                        <p class="panel-description">
+                            Understand the current problem landscape.
+                        </p>
+
+
+                        <div class="stats">
+
+                            <div class="stat">
+
+                                <div
+                                    class="stat-value"
+                                    id="challengeTotal"
+                                >
+                                    0
+                                </div>
+
+                                <div class="stat-label">
+                                    Challenges
+                                </div>
+
+                            </div>
+
+
+                            <div class="stat">
+
+                                <div
+                                    class="stat-value"
+                                    id="challengeCategories"
+                                >
+                                    0
+                                </div>
+
+                                <div class="stat-label">
+                                    Categories
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="insight">
+                            Strong challenges create the foundation for
+                            meaningful opportunities.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- OPPORTUNITIES -->
+
+            <div
+                id="opportunitiesWorkspace"
+                class="module-workspace"
+                style="display:none;"
+            >
+
+                <div class="workspace-header">
+
+                    <div class="workspace-title">
+
+                        <h2>
+                            Opportunities
+                        </h2>
+
+                        <p>
+                            Discover possibilities within city challenges.
+                        </p>
+
+                    </div>
+
+                    <div class="workspace-actions">
+
+                        <button
+                            class="btn"
+                            onclick="closeWorkspace()"
+                        >
+                            Dashboard
+                        </button>
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="showForm('opportunityForm')"
+                        >
+                            + Add Opportunity
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="workspace-grid">
+
+                    <div class="panel">
+
+                        <h3>
+                            Opportunities
+                        </h3>
+
+                        <p class="panel-description">
+                            Define areas where technology, services,
+                            partnerships or new models could create value.
+                        </p>
+
+
+                        <div
+                            id="opportunityForm"
+                            style="display:none;"
+                        >
+
+                            <form
+                                onsubmit="saveOpportunity(event)"
+                            >
+
+                                <div class="form-grid">
+
+                                    <div class="form-group full">
+
+                                        <label for="opportunityTitle">
+                                            Opportunity
+                                        </label>
+
+                                        <input
+                                            id="opportunityTitle"
+                                            required
+                                            placeholder="What opportunity exists?"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group full">
+
+                                        <label for="opportunityDescription">
+                                            Description
+                                        </label>
+
+                                        <textarea
+                                            id="opportunityDescription"
+                                            required
+                                            placeholder="Explain the opportunity and the value it could create."
+                                        ></textarea>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="opportunityCategory">
+                                            Category
+                                        </label>
+
+                                        <select id="opportunityCategory">
+
+                                            <option>
+                                                Digital Services
+                                            </option>
+
+                                            <option>
+                                                Mobility
+                                            </option>
+
+                                            <option>
+                                                Environment
+                                            </option>
+
+                                            <option>
+                                                Infrastructure
+                                            </option>
+
+                                            <option>
+                                                Commerce
+                                            </option>
+
+                                            <option>
+                                                Public Services
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="opportunityAudience">
+                                            Primary Audience
+                                        </label>
+
+                                        <input
+                                            id="opportunityAudience"
+                                            placeholder="Who benefits?"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-actions">
+
+                                    <button
+                                        type="button"
+                                        class="btn"
+                                        onclick="hideForm('opportunityForm')"
+                                    >
+                                        Cancel
+                                    </button>
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                    >
+                                        Save Opportunity
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+
+                        <div
+                            id="opportunitiesList"
+                            class="records"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <h3>
+                            Opportunity Intelligence
+                        </h3>
+
+                        <p class="panel-description">
+                            See where city challenges may create opportunities
+                            for innovation.
+                        </p>
+
+
+                        <div class="stats">
+
+                            <div class="stat">
+
+                                <div
+                                    class="stat-value"
+                                    id="opportunityTotal"
+                                >
+                                    0
+                                </div>
+
+                                <div class="stat-label">
+                                    Opportunities
+                                </div>
+
+                            </div>
+
+
+                            <div class="stat">
+
+                                <div
+                                    class="stat-value"
+                                    id="opportunityCategories"
+                                >
+                                    0
+                                </div>
+
+                                <div class="stat-label">
+                                    Categories
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="insight">
+                            Opportunities connect city needs with potential
+                            solutions, businesses and public value.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- IDEAS -->
+
+            <div
+                id="ideasWorkspace"
+                class="module-workspace"
+                style="display:none;"
+            >
+
+                <div class="workspace-header">
+
+                    <div class="workspace-title">
+
+                        <h2>
+                            Ideas
+                        </h2>
+
+                        <p>
+                            Develop concepts that can respond to city opportunities.
+                        </p>
+
+                    </div>
+
+                    <div class="workspace-actions">
+
+                        <button
+                            class="btn"
+                            onclick="closeWorkspace()"
+                        >
+                            Dashboard
+                        </button>
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="showForm('ideaForm')"
+                        >
+                            + Add Idea
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="workspace-grid">
+
+                    <div class="panel">
+
+                        <h3>
+                            Solution Ideas
+                        </h3>
+
+                        <p class="panel-description">
+                            Capture potential products, services, platforms,
+                            interventions and experiments.
+                        </p>
+
+
+                        <div
+                            id="ideaForm"
+                            style="display:none;"
+                        >
+
+                            <form
+                                onsubmit="saveIdea(event)"
+                            >
+
+                                <div class="form-grid">
+
+                                    <div class="form-group full">
+
+                                        <label for="ideaTitle">
+                                            Idea
+                                        </label>
+
+                                        <input
+                                            id="ideaTitle"
+                                            required
+                                            placeholder="What could we build or create?"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group full">
+
+                                        <label for="ideaDescription">
+                                            Description
+                                        </label>
+
+                                        <textarea
+                                            id="ideaDescription"
+                                            required
+                                            placeholder="Describe the proposed solution."
+                                        ></textarea>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="ideaType">
+                                            Type
+                                        </label>
+
+                                        <select id="ideaType">
+
+                                            <option>
+                                                Digital Product
+                                            </option>
+
+                                            <option>
+                                                Mobile App
+                                            </option>
+
+                                            <option>
+                                                Web Platform
+                                            </option>
+
+                                            <option>
+                                                Service
+                                            </option>
+
+                                            <option>
+                                                Infrastructure
+                                            </option>
+
+                                            <option>
+                                                Community Program
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="ideaStage">
+                                            Stage
+                                        </label>
+
+                                        <select id="ideaStage">
+
+                                            <option>
+                                                Concept
+                                            </option>
+
+                                            <option>
+                                                Exploring
+                                            </option>
+
+                                            <option>
+                                                Validating
+                                            </option>
+
+                                            <option>
+                                                Ready for Project
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-actions">
+
+                                    <button
+                                        type="button"
+                                        class="btn"
+                                        onclick="hideForm('ideaForm')"
+                                    >
+                                        Cancel
+                                    </button>
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                    >
+                                        Save Idea
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+
+                        <div
+                            id="ideasList"
+                            class="records"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <h3>
+                            Idea Intelligence
+                        </h3>
+
+                        <p class="panel-description">
+                            Track concepts as they mature toward execution.
+                        </p>
+
+
+                        <div class="stats">
+
+                            <div class="stat">
+
+                                <div
+                                    class="stat-value"
+                                    id="ideaTotal"
+                                >
+                                    0
+                                </div>
+
+                                <div class="stat-label">
+                                    Ideas
+                                </div>
+
+                            </div>
+
+
+                            <div class="stat">
+
+                                <div
+                                    class="stat-value"
+                                    id="ideaReady"
+                                >
+                                    0
+                                </div>
+
+                                <div class="stat-label">
+                                    Ready for Project
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="insight">
+                            Ideas become valuable when they are tested,
+                            developed and connected to real needs.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECTS -->
+
+            <div
+                id="projectsWorkspace"
+                class="module-workspace"
+                style="display:none;"
+            >
+
+                <div class="workspace-header">
+
+                    <div class="workspace-title">
+
+                        <h2>
+                            Projects
+                        </h2>
+
+                        <p>
+                            Turn selected ideas into executable city projects.
+                        </p>
+
+                    </div>
+
+                    <div class="workspace-actions">
+
+                        <button
+                            class="btn"
+                            onclick="closeWorkspace()"
+                        >
+                            Dashboard
+                        </button>
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="showForm('projectForm')"
+                        >
+                            + Add Project
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="workspace-grid">
+
+                    <div class="panel">
+
+                        <h3>
+                            City Projects
+                        </h3>
+
+                        <p class="panel-description">
+                            Organize initiatives that move from concept into
+                            building, testing, deployment and operation.
+                        </p>
+
+
+                        <div
+                            id="projectForm"
+                            style="display:none;"
+                        >
+
+                            <form
+                                onsubmit="saveProject(event)"
+                            >
+
+                                <div class="form-grid">
+
+                                    <div class="form-group full">
+
+                                        <label for="projectTitle">
+                                            Project
+                                        </label>
+
+                                        <input
+                                            id="projectTitle"
+                                            required
+                                            placeholder="Project name"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group full">
+
+                                        <label for="projectDescription">
+                                            Description
+                                        </label>
+
+                                        <textarea
+                                            id="projectDescription"
+                                            required
+                                            placeholder="What will this project deliver?"
+                                        ></textarea>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="projectStatus">
+                                            Status
+                                        </label>
+
+                                        <select id="projectStatus">
+
+                                            <option>
+                                                Planning
+                                            </option>
+
+                                            <option>
+                                                Building
+                                            </option>
+
+                                            <option>
+                                                Testing
+                                            </option>
+
+                                            <option>
+                                                Live
+                                            </option>
+
+                                            <option>
+                                                Paused
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="projectOwner">
+                                            Owner
+                                        </label>
+
+                                        <input
+                                            id="projectOwner"
+                                            placeholder="Project owner or team"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-actions">
+
+                                    <button
+                                        type="button"
+                                        class="btn"
+                                        onclick="hideForm('projectForm')"
+                                    >
+                                        Cancel
+                                    </button>
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                    >
+                                        Save Project
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+
+                        <div
+                            id="projectsList"
+                            class="records"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <h3>
+                            Project Intelligence
+                        </h3>
+
+                        <p class="panel-description">
+                            Understand the current city project portfolio.
+                        </p>
+
+
+                        <div class="stats">
+
+                            <div class="stat">
+
+                                <div
+                                    class="stat-value"
+                                    id="projectTotal"
+                                >
+                                    0
+                                </div>
+
+                                <div class="stat-label">
+                                    Projects
+                                </div>
+
+                            </div>
+
+
+                            <div class="stat">
+
+                                <div
+                                    class="stat-value"
+                                    id="projectLive"
+                                >
+                                    0
+                                </div>
+
+                                <div class="stat-label">
+                                    Live
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="insight">
+                            Projects are where ideas become tangible systems,
+                            services and interventions.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- IMPACT -->
+
+            <div
+                id="impactWorkspace"
+                class="module-workspace"
+                style="display:none;"
+            >
+
+                <div class="workspace-header">
+
+                    <div class="workspace-title">
+
+                        <h2>
+                            Impact
+                        </h2>
+
+                        <p>
+                            Measure what changes after city projects are deployed.
+                        </p>
+
+                    </div>
+
+                    <div class="workspace-actions">
+
+                        <button
+                            class="btn"
+                            onclick="closeWorkspace()"
+                        >
+                            Dashboard
+                        </button>
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="showForm('impactForm')"
+                        >
+                            + Add Outcome
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="workspace-grid">
+
+                    <div class="panel">
+
+                        <h3>
+                            Impact Outcomes
+                        </h3>
+
+                        <p class="panel-description">
+                            Capture measurable outcomes, improvements,
+                            lessons and evidence from projects.
+                        </p>
+
+
+                        <div
+                            id="impactForm"
+                            style="display:none;"
+                        >
+
+                            <form
+                                onsubmit="saveImpact(event)"
+                            >
+
+                                <div class="form-grid">
+
+                                    <div class="form-group full">
+
+                                        <label for="impactTitle">
+                                            Outcome
+                                        </label>
+
+                                        <input
+                                            id="impactTitle"
+                                            required
+                                            placeholder="What changed?"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group full">
+
+                                        <label for="impactDescription">
+                                            Description
+                                        </label>
+
+                                        <textarea
+                                            id="impactDescription"
+                                            required
+                                            placeholder="Describe the measurable result or change."
+                                        ></textarea>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="impactMetric">
+                                            Metric
+                                        </label>
+
+                                        <input
+                                            id="impactMetric"
+                                            placeholder="e.g. travel time"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="impactValue">
+                                            Value
+                                        </label>
+
+                                        <input
+                                            id="impactValue"
+                                            placeholder="e.g. 25%"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-actions">
+
+                                    <button
+                                        type="button"
+                                        class="btn"
+                                        onclick="hideForm('impactForm')"
+                                    >
+                                        Cancel
+                                    </button>
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                    >
+                                        Save Outcome
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+
+                        <div
+                            id="impactList"
+                            class="records"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <h3>
+                            Impact Overview
+                        </h3>
+
+                        <p class="panel-description">
+                            High-level view of measurable city outcomes.
+                        </p>
+
+
+                        <div class="impact-grid">
+
+                            <div class="impact-card">
+
+                                <div
+                                    class="impact-value"
+                                    id="impactTotal"
+                                >
+                                    0
+                                </div>
+
+                                <div class="impact-label">
+                                    Outcomes
+                                </div>
+
+                            </div>
+
+
+                            <div class="impact-card">
+
+                                <div
+                                    class="impact-value"
+                                    id="impactProjects"
+                                >
+                                    0
+                                </div>
+
+                                <div class="impact-label">
+                                    Projects
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="insight">
+                            Impact closes the loop and provides evidence for
+                            what should be continued, improved or scaled.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        SPF Studio Inc. — Smart City
+    </footer>
+
+</div>
+
+
+<script>
+
+    /* =========================================================
+       STORAGE
+    ========================================================= */
+
+    const STORAGE_KEYS = {
+
+        signals:
+            "spf_smart_city_signals",
+
+        challenges:
+            "spf_smart_city_challenges",
+
+        opportunities:
+            "spf_smart_city_opportunities",
+
+        ideas:
+            "spf_smart_city_ideas",
+
+        projects:
+            "spf_smart_city_projects",
+
+        impact:
+            "spf_smart_city_impact"
+
+    };
+
+
+    function loadRecords(key) {
+
+        try {
+
+            return JSON.parse(
+                localStorage.getItem(key) || "[]"
+            );
+
+        } catch (error) {
+
+            return [];
+
+        }
+
+    }
+
+
+    function saveRecords(key, records) {
+
+        localStorage.setItem(
+            key,
+            JSON.stringify(records)
+        );
+
+    }
+
+
+    /* =========================================================
+       MODULE NAVIGATION
+    ========================================================= */
+
+    const modules = [
+
+        "signals",
+        "challenges",
+        "opportunities",
+        "ideas",
+        "projects",
+        "impact"
+
+    ];
+
+
+    function openModule(module) {
+
+        const workspace =
+            document.getElementById("workspace");
+
+        workspace.classList.add("visible");
+
+        modules.forEach(function (item) {
+
+            const element =
+                document.getElementById(
+                    item + "Workspace"
+                );
+
+            if (element) {
+
+                element.style.display =
+                    item === module
+                        ? "block"
+                        : "none";
+
+            }
+
+        });
+
+        workspace.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        renderAll();
+
+    }
+
+
+    function closeWorkspace() {
+
+        const workspace =
+            document.getElementById("workspace");
+
+        workspace.classList.remove("visible");
+
+        modules.forEach(function (item) {
+
+            const element =
+                document.getElementById(
+                    item + "Workspace"
+                );
+
+            if (element) {
+
+                element.style.display =
+                    "none";
+
+            }
+
+        });
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /* =========================================================
+       FORMS
+    ========================================================= */
+
+    function showForm(id) {
+
+        const element =
+            document.getElementById(id);
+
+        if (element) {
+
+            element.style.display =
+                "block";
+
+        }
+
+    }
+
+
+    function hideForm(id) {
+
+        const element =
+            document.getElementById(id);
+
+        if (element) {
+
+            element.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    function showSignalForm() {
+
+        showForm("signalForm");
+
+    }
+
+
+    function hideSignalForm() {
+
+        hideForm("signalForm");
+
+    }
+
+
+    function showNotice(message) {
+
+        const notice =
+            document.getElementById("notice");
+
+        notice.textContent =
+            message;
+
+        notice.classList.add("visible");
+
+        setTimeout(function () {
+
+            notice.classList.remove(
+                "visible"
+            );
+
+        }, 3000);
+
+    }
+
+
+    /* =========================================================
+       SIGNALS
+    ========================================================= */
+
+    function saveSignal(event) {
+
+        event.preventDefault();
+
+        const records =
+            loadRecords(
+                STORAGE_KEYS.signals
+            );
+
+        records.unshift({
+
+            id:
+                Date.now(),
+
+            signal:
+                document
+                    .getElementById("signal")
+                    .value
+                    .trim(),
+
+            observation:
+                document
+                    .getElementById("observation")
+                    .value
+                    .trim(),
+
+            location:
+                document
+                    .getElementById("signalLocation")
+                    .value
+                    .trim(),
+
+            category:
+                document
+                    .getElementById("signalCategory")
+                    .value,
+
+            source:
+                document
+                    .getElementById("signalSource")
+                    .value
+                    .trim(),
+
+            createdAt:
+                new Date().toLocaleString()
+
+        });
+
+
+        saveRecords(
+            STORAGE_KEYS.signals,
+            records
+        );
+
+
+        event.target.reset();
+
+        hideSignalForm();
+
+        showNotice(
+            "City signal saved."
+        );
+
+        renderAll();
+
+    }
+
+
+    function renderSignals() {
+
+        const records =
+            loadRecords(
+                STORAGE_KEYS.signals
+            );
+
+        const list =
+            document.getElementById(
+                "signalsList"
+            );
+
+        if (!records.length) {
+
+            list.innerHTML = `
+                <div class="empty-state">
+                    No city signals yet.
+                    Add the first signal to begin.
+                </div>
+            `;
+
+        } else {
+
+            list.innerHTML =
+                records.map(function (item) {
+
+                    return `
+                        <div class="record">
+
+                            <div class="record-top">
+
+                                <div>
+
+                                    <div class="record-title">
+                                        ${escapeHtml(item.signal)}
+                                    </div>
+
+                                    <div class="record-meta">
+                                        ${escapeHtml(item.location || "Location not specified")}
+                                        ·
+                                        ${escapeHtml(item.category)}
+                                    </div>
+
+                                </div>
+
+                                <span class="badge badge-blue">
+                                    Signal
+                                </span>
+
+                            </div>
+
+                            <div class="record-description">
+                                ${escapeHtml(item.observation)}
+                            </div>
+
+                            ${
+                                item.source
+                                    ? `
+                                        <div class="record-meta">
+                                            Source:
+                                            ${escapeHtml(item.source)}
+                                        </div>
+                                    `
+                                    : ""
+                            }
+
+                        </div>
+                    `;
+
+                }).join("");
+
+        }
+
+
+        document.getElementById(
+            "signalTotal"
+        ).textContent =
+            records.length;
+
+
+        const categories =
+            new Set(
+                records.map(function (item) {
+
+                    return item.category;
+
+                })
+            );
+
+
+        document.getElementById(
+            "signalCategories"
+        ).textContent =
+            records.length
+                ? categories.size
+                : 0;
+
+    }
+
+
+    /* =========================================================
+       CHALLENGES
+    ========================================================= */
+
+    function saveChallenge(event) {
+
+        event.preventDefault();
+
+        const records =
+            loadRecords(
+                STORAGE_KEYS.challenges
+            );
+
+        records.unshift({
+
+            id:
+                Date.now(),
+
+            title:
+                document
+                    .getElementById("challengeTitle")
+                    .value
+                    .trim(),
+
+            description:
+                document
+                    .getElementById("challengeDescription")
+                    .value
+                    .trim(),
+
+            location:
+                document
+                    .getElementById("challengeLocation")
+                    .value
+                    .trim(),
+
+            category:
+                document
+                    .getElementById("challengeCategory")
+                    .value,
+
+            createdAt:
+                new Date().toLocaleString()
+
+        });
+
+
+        saveRecords(
+            STORAGE_KEYS.challenges,
+            records
+        );
+
+
+        event.target.reset();
+
+        hideForm("challengeForm");
+
+        showNotice(
+            "City challenge saved."
+        );
+
+        renderAll();
+
+    }
+
+
+    function renderChallenges() {
+
+        const records =
+            loadRecords(
+                STORAGE_KEYS.challenges
+            );
+
+        const list =
+            document.getElementById(
+                "challengesList"
+            );
+
+
+        if (!records.length) {
+
+            list.innerHTML = `
+                <div class="empty-state">
+                    No challenges yet.
+                    Define the first urban challenge.
+                </div>
+            `;
+
+        } else {
+
+            list.innerHTML =
+                records.map(function (item) {
+
+                    return `
+                        <div class="record">
+
+                            <div class="record-top">
+
+                                <div>
+
+                                    <div class="record-title">
+                                        ${escapeHtml(item.title)}
+                                    </div>
+
+                                    <div class="record-meta">
+                                        ${escapeHtml(item.location || "Location not specified")}
+                                        ·
+                                        ${escapeHtml(item.category)}
+                                    </div>
+
+                                </div>
+
+                                <span class="badge badge-amber">
+                                    Challenge
+                                </span>
+
+                            </div>
+
+                            <div class="record-description">
+                                ${escapeHtml(item.description)}
+                            </div>
+
+                        </div>
+                    `;
+
+                }).join("");
+
+        }
+
+
+        document.getElementById(
+            "challengeTotal"
+        ).textContent =
+            records.length;
+
+
+        document.getElementById(
+            "challengeCategories"
+        ).textContent =
+            new Set(
+                records.map(function (item) {
+
+                    return item.category;
+
+                })
+            ).size;
+
+    }
+
+
+    /* =========================================================
+       OPPORTUNITIES
+    ========================================================= */
+
+    function saveOpportunity(event) {
+
+        event.preventDefault();
+
+        const records =
+            loadRecords(
+                STORAGE_KEYS.opportunities
+            );
+
+        records.unshift({
+
+            id:
+                Date.now(),
+
+            title:
+                document
+                    .getElementById("opportunityTitle")
+                    .value
+                    .trim(),
+
+            description:
+                document
+                    .getElementById("opportunityDescription")
+                    .value
+                    .trim(),
+
+            category:
+                document
+                    .getElementById("opportunityCategory")
+                    .value,
+
+            audience:
+                document
+                    .getElementById("opportunityAudience")
+                    .value
+                    .trim(),
+
+            createdAt:
+                new Date().toLocaleString()
+
+        });
+
+
+        saveRecords(
+            STORAGE_KEYS.opportunities,
+            records
+        );
+
+
+        event.target.reset();
+
+        hideForm(
+            "opportunityForm"
+        );
+
+        showNotice(
+            "Opportunity saved."
+        );
+
+        renderAll();
+
+    }
+
+
+    function renderOpportunities() {
+
+        const records =
+            loadRecords(
+                STORAGE_KEYS.opportunities
+            );
+
+        const list =
+            document.getElementById(
+                "opportunitiesList"
+            );
+
+
+        if (!records.length) {
+
+            list.innerHTML = `
+                <div class="empty-state">
+                    No opportunities yet.
+                    Identify the first opportunity.
+                </div>
+            `;
+
+        } else {
+
+            list.innerHTML =
+                records.map(function (item) {
+
+                    return `
+                        <div class="record">
+
+                            <div class="record-top">
+
+                                <div>
+
+                                    <div class="record-title">
+                                        ${escapeHtml(item.title)}
+                                    </div>
+
+                                    <div class="record-meta">
+                                        ${escapeHtml(item.category)}
+                                        ${
+                                            item.audience
+                                                ? " · " +
+                                                  escapeHtml(item.audience)
+                                                : ""
+                                        }
+                                    </div>
+
+                                </div>
+
+                                <span class="badge badge-green">
+                                    Opportunity
+                                </span>
+
+                            </div>
+
+                            <div class="record-description">
+                                ${escapeHtml(item.description)}
+                            </div>
+
+                        </div>
+                    `;
+
+                }).join("");
+
+        }
+
+
+        document.getElementById(
+            "opportunityTotal"
+        ).textContent =
+            records.length;
+
+
+        document.getElementById(
+            "opportunityCategories"
+        ).textContent =
+            new Set(
+                records.map(function (item) {
+
+                    return item.category;
+
+                })
+            ).size;
+
+    }
+
+
+    /* =========================================================
+       IDEAS
+    ========================================================= */
+
+    function saveIdea(event) {
+
+        event.preventDefault();
+
+        const records =
+            loadRecords(
+                STORAGE_KEYS.ideas
+            );
+
+        records.unshift({
+
+            id:
+                Date.now(),
+
+            title:
+                document
+                    .getElementById("ideaTitle")
+                    .value
+                    .trim(),
+
+            description:
+                document
+                    .getElementById("ideaDescription")
+                    .value
+                    .trim(),
+
+            type:
+                document
+                    .getElementById("ideaType")
+                    .value,
+
+            stage:
+                document
+                    .getElementById("ideaStage")
+                    .value,
+
+            createdAt:
+                new Date().toLocaleString()
+
+        });
+
+
+        saveRecords(
+            STORAGE_KEYS.ideas,
+            records
+        );
+
+
+        event.target.reset();
+
+        hideForm("ideaForm");
+
+        showNotice(
+            "Idea saved."
+        );
+
+        renderAll();
+
+    }
+
+
+    function renderIdeas() {
+
+        const records =
+            loadRecords(
+                STORAGE_KEYS.ideas
+            );
+
+        const list =
+            document.getElementById(
+                "ideasList"
+            );
+
+
+        if (!records.length) {
+
+            list.innerHTML = `
+                <div class="empty-state">
+                    No ideas yet.
+                    Develop the first solution concept.
+                </div>
+            `;
+
+        } else {
+
+            list.innerHTML =
+                records.map(function (item) {
+
+                    let badgeClass =
+                        "badge-gray";
+
+                    if (
+                        item.stage ===
+                        "Ready for Project"
+                    ) {
+
+                        badgeClass =
+                            "badge-green";
+
+                    } else if (
+                        item.stage ===
+                        "Validating"
+                    ) {
+
+                        badgeClass =
+                            "badge-blue";
+
+                    }
+
+
+                    return `
+                        <div class="record">
+
+                            <div class="record-top">
+
+                                <div>
+
+                                    <div class="record-title">
+                                        ${escapeHtml(item.title)}
+                                    </div>
+
+                                    <div class="record-meta">
+                                        ${escapeHtml(item.type)}
+                                    </div>
+
+                                </div>
+
+                                <span class="badge ${badgeClass}">
+                                    ${escapeHtml(item.stage)}
+                                </span>
+
+                            </div>
+
+                            <div class="record-description">
+                                ${escapeHtml(item.description)}
+                            </div>
+
+                        </div>
+                    `;
+
+                }).join("");
+
+        }
+
+
+        const ready =
+            records.filter(function (item) {
+
+                return item.stage ===
+                    "Ready for Project";
+
+            }).length;
+
+
+        document.getElementById(
+            "ideaTotal"
+        ).textContent =
+            records.length;
+
+
+        document.getElementById(
+            "ideaReady"
+        ).textContent =
+            ready;
+
+    }
+
+
+    /* =========================================================
+       PROJECTS
+    ========================================================= */
+
+    function saveProject(event) {
+
+        event.preventDefault();
+
+        const records =
+            loadRecords(
+                STORAGE_KEYS.projects
+            );
+
+        records.unshift({
+
+            id:
+                Date.now(),
+
+            title:
+                document
+                    .getElementById("projectTitle")
+                    .value
+                    .trim(),
+
+            description:
+                document
+                    .getElementById("projectDescription")
+                    .value
+                    .trim(),
+
+            status:
+                document
+                    .getElementById("projectStatus")
+                    .value,
+
+            owner:
+                document
+                    .getElementById("projectOwner")
+                    .value
+                    .trim(),
+
+            createdAt:
+                new Date().toLocaleString()
+
+        });
+
+
+        saveRecords(
+            STORAGE_KEYS.projects,
+            records
+        );
+
+
+        event.target.reset();
+
+        hideForm(
+            "projectForm"
+        );
+
+        showNotice(
+            "Project saved."
+        );
+
+        renderAll();
+
+    }
+
+
+    function renderProjects() {
+
+        const records =
+            loadRecords(
+                STORAGE_KEYS.projects
+            );
+
+        const list =
+            document.getElementById(
+                "projectsList"
+            );
+
+
+        if (!records.length) {
+
+            list.innerHTML = `
+                <div class="empty-state">
+                    No city projects yet.
+                    Create the first project.
+                </div>
+            `;
+
+        } else {
+
+            list.innerHTML =
+                records.map(function (item) {
+
+                    let badgeClass =
+                        "badge-gray";
+
+
+                    if (
+                        item.status === "Live"
+                    ) {
+
+                        badgeClass =
+                            "badge-green";
+
+                    } else if (
+                        item.status === "Building"
+                        ||
+                        item.status === "Testing"
+                    ) {
+
+                        badgeClass =
+                            "badge-blue";
+
+                    } else if (
+                        item.status === "Planning"
+                    ) {
+
+                        badgeClass =
+                            "badge-amber";
+
+                    }
+
+
+                    return `
+                        <div class="record">
+
+                            <div class="record-top">
+
+                                <div>
+
+                                    <div class="record-title">
+                                        ${escapeHtml(item.title)}
+                                    </div>
+
+                                    <div class="record-meta">
+                                        ${
+                                            item.owner
+                                                ? "Owner: " +
+                                                  escapeHtml(item.owner)
+                                                : "Owner not specified"
+                                        }
+                                    </div>
+
+                                </div>
+
+                                <span class="badge ${badgeClass}">
+                                    ${escapeHtml(item.status)}
+                                </span>
+
+                            </div>
+
+                            <div class="record-description">
+                                ${escapeHtml(item.description)}
+                            </div>
+
+                        </div>
+                    `;
+
+                }).join("");
+
+        }
+
+
+        const live =
+            records.filter(function (item) {
+
+                return item.status === "Live";
+
+            }).length;
+
+
+        document.getElementById(
+            "projectTotal"
+        ).textContent =
+            records.length;
+
+
+        document.getElementById(
+            "projectLive"
+        ).textContent =
+            live;
+
+    }
+
+
+    /* =========================================================
+       IMPACT
+    ========================================================= */
+
+    function saveImpact(event) {
+
+        event.preventDefault();
+
+        const records =
+            loadRecords(
+                STORAGE_KEYS.impact
+            );
+
+        records.unshift({
+
+            id:
+                Date.now(),
+
+            title:
+                document
+                    .getElementById("impactTitle")
+                    .value
+                    .trim(),
+
+            description:
+                document
+                    .getElementById("impactDescription")
+                    .value
+                    .trim(),
+
+            metric:
+                document
+                    .getElementById("impactMetric")
+                    .value
+                    .trim(),
+
+            value:
+                document
+                    .getElementById("impactValue")
+                    .value
+                    .trim(),
+
+            createdAt:
+                new Date().toLocaleString()
+
+        });
+
+
+        saveRecords(
+            STORAGE_KEYS.impact,
+            records
+        );
+
+
+        event.target.reset();
+
+        hideForm(
+            "impactForm"
+        );
+
+        showNotice(
+            "Impact outcome saved."
+        );
+
+        renderAll();
+
+    }
+
+
+    function renderImpact() {
+
+        const records =
+            loadRecords(
+                STORAGE_KEYS.impact
+            );
+
+        const list =
+            document.getElementById(
+                "impactList"
+            );
+
+
+        if (!records.length) {
+
+            list.innerHTML = `
+                <div class="empty-state">
+                    No impact outcomes yet.
+                    Record the first measurable result.
+                </div>
+            `;
+
+        } else {
+
+            list.innerHTML =
+                records.map(function (item) {
+
+                    return `
+                        <div class="record">
+
+                            <div class="record-top">
+
+                                <div>
+
+                                    <div class="record-title">
+                                        ${escapeHtml(item.title)}
+                                    </div>
+
+                                    <div class="record-meta">
+                                        ${
+                                            item.metric
+                                                ? escapeHtml(item.metric)
+                                                : "Metric not specified"
+                                        }
+
+                                        ${
+                                            item.value
+                                                ? " · " +
+                                                  escapeHtml(item.value)
+                                                : ""
+                                        }
+                                    </div>
+
+                                </div>
+
+                                <span class="badge badge-green">
+                                    Outcome
+                                </span>
+
+                            </div>
+
+                            <div class="record-description">
+                                ${escapeHtml(item.description)}
+                            </div>
+
+                        </div>
+                    `;
+
+                }).join("");
+
+        }
+
+
+        document.getElementById(
+            "impactTotal"
+        ).textContent =
+            records.length;
+
+
+        const projects =
+            loadRecords(
+                STORAGE_KEYS.projects
+            );
+
+
+        document.getElementById(
+            "impactProjects"
+        ).textContent =
+            projects.length;
+
+    }
+
+
+    /* =========================================================
+       DASHBOARD COUNTS
+    ========================================================= */
+
+    function updateDashboardCounts() {
+
+        const signals =
+            loadRecords(
+                STORAGE_KEYS.signals
+            );
+
+        const challenges =
+            loadRecords(
+                STORAGE_KEYS.challenges
+            );
+
+        const opportunities =
+            loadRecords(
+                STORAGE_KEYS.opportunities
+            );
+
+        const ideas =
+            loadRecords(
+                STORAGE_KEYS.ideas
+            );
+
+        const projects =
+            loadRecords(
+                STORAGE_KEYS.projects
+            );
+
+        const impact =
+            loadRecords(
+                STORAGE_KEYS.impact
+            );
+
+
+        document.getElementById(
+            "dashboardSignalsCount"
+        ).textContent =
+            signals.length +
+            (
+                signals.length === 1
+                    ? " signal"
+                    : " signals"
+            );
+
+
+        document.getElementById(
+            "dashboardChallengesCount"
+        ).textContent =
+            challenges.length +
+            (
+                challenges.length === 1
+                    ? " challenge"
+                    : " challenges"
+            );
+
+
+        document.getElementById(
+            "dashboardOpportunitiesCount"
+        ).textContent =
+            opportunities.length +
+            (
+                opportunities.length === 1
+                    ? " opportunity"
+                    : " opportunities"
+            );
+
+
+        document.getElementById(
+            "dashboardIdeasCount"
+        ).textContent =
+            ideas.length +
+            (
+                ideas.length === 1
+                    ? " idea"
+                    : " ideas"
+            );
+
+
+        document.getElementById(
+            "dashboardProjectsCount"
+        ).textContent =
+            projects.length +
+            (
+                projects.length === 1
+                    ? " project"
+                    : " projects"
+            );
+
+
+        document.getElementById(
+            "dashboardImpactCount"
+        ).textContent =
+            impact.length +
+            (
+                impact.length === 1
+                    ? " outcome"
+                    : " outcomes"
+            );
+
+    }
+
+
+    /* =========================================================
+       RENDER ALL
+    ========================================================= */
+
+    function renderAll() {
+
+        renderSignals();
+
+        renderChallenges();
+
+        renderOpportunities();
+
+        renderIdeas();
+
+        renderProjects();
+
+        renderImpact();
+
+        updateDashboardCounts();
+
+    }
+
+
+    /* =========================================================
+       HTML SAFETY
+    ========================================================= */
+
+    function escapeHtml(value) {
+
+        return String(value || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* =========================================================
+       STARTUP
+    ========================================================= */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            renderAll();
+
+        }
+    );
+
+</script>
+
+
+
+<style>
+.send-to-innovation {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 9px 14px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #172033;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.send-to-innovation:hover {
+    background: #f8fafc;
+}
+
+.send-to-innovation:disabled {
+    cursor: default;
+    opacity: 0.75;
+}
+
+.send-to-innovation.innovation-sent {
+    border-color: #16a34a;
+    color: #166534;
+    background: #ecfdf3;
+}
+</style>
+
+
+
+<script>
+(function () {
+    const SPF_TOKEN_KEY = "spf_access_token";
+    const SPF_ORG_KEY = "spf_organization_id";
+
+    const INNOVATION_SENT_KEY =
+        "spf_smart_city_innovation_sent";
+
+    function getSent() {
+        try {
+            return JSON.parse(
+                localStorage.getItem(
+                    INNOVATION_SENT_KEY
+                ) || "{}"
+            );
+        } catch {
+            return {};
+        }
+    }
+
+    function markSent(key) {
+        const sent = getSent();
+
+        sent[key] = true;
+
+        localStorage.setItem(
+            INNOVATION_SENT_KEY,
+            JSON.stringify(sent)
+        );
+    }
+
+    function getToken() {
+        return localStorage.getItem(
+            SPF_TOKEN_KEY
+        );
+    }
+
+    function getOrganizationId() {
+        return (
+            localStorage.getItem(
+                SPF_ORG_KEY
+            ) || "7"
+        );
+    }
+
+    async function sendProblem(
+        title,
+        description,
+        button
+    ) {
+        const token = getToken();
+
+        if (!token) {
+            alert("Please sign in first.");
+
+            window.location.href =
+                "/login";
+
+            return false;
+        }
+
+        button.disabled = true;
+
+        button.textContent =
+            "Sending...";
+
+        try {
+            const response =
+                await fetch(
+                    "/innovation/problems",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json",
+
+                            "Authorization":
+                                "Bearer " + token,
+
+                            "X-Organization-ID":
+                                getOrganizationId()
+                        },
+
+                        body: JSON.stringify({
+                            title: title,
+
+                            description:
+                                description ||
+                                "Discovered through Smart City.",
+
+                            status: "new",
+
+                            domain:
+                                "Smart City",
+
+                            source_type:
+                                "Smart City",
+
+                            source_reference:
+                                "/smart-city",
+
+                            discovered_by:
+                                "Smart City",
+
+                            urgency:
+                                "To be assessed",
+
+                            impact_potential:
+                                "To be assessed",
+
+                            strategic_relevance:
+                                "To be assessed"
+                        })
+                    }
+                );
+
+            const data =
+                await response.json();
+
+            if (!response.ok) {
+                throw new Error(
+                    data.detail ||
+                    "Unable to send to Innovation."
+                );
+            }
+
+            button.textContent =
+                "Sent to Innovation ✓";
+
+            button.disabled = true;
+
+            button.classList.add(
+                "innovation-sent"
+            );
+
+            return true;
+
+        } catch (error) {
+            console.error(error);
+
+            button.disabled = false;
+
+            button.textContent =
+                "Send to Innovation";
+
+            alert(
+                error.message ||
+                "Unable to send to Innovation."
+            );
+
+            return false;
+        }
+    }
+
+    function connectRecord(
+        recordElement,
+        title,
+        description,
+        uniqueKey
+    ) {
+        if (
+            recordElement.querySelector(
+                ".send-to-innovation"
+            )
+        ) {
+            return;
+        }
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+        button.type = "button";
+
+        button.className =
+            "send-to-innovation";
+
+        button.textContent =
+            "Send to Innovation";
+
+        const sent =
+            getSent();
+
+        if (sent[uniqueKey]) {
+            button.textContent =
+                "Sent to Innovation ✓";
+
+            button.disabled = true;
+
+            button.classList.add(
+                "innovation-sent"
+            );
+        }
+
+        button.addEventListener(
+            "click",
+            async function () {
+                if (
+                    getSent()[uniqueKey]
+                ) {
+                    return;
+                }
+
+                const success =
+                    await sendProblem(
+                        title,
+                        description,
+                        button
+                    );
+
+                if (success) {
+                    markSent(uniqueKey);
+                }
+            }
+        );
+
+        recordElement.appendChild(
+            button
+        );
+    }
+
+    function connectSignals() {
+        const list =
+            document.getElementById(
+                "signalsList"
+            );
+
+        if (!list) {
+            return;
+        }
+
+        list.querySelectorAll(
+            ".entry"
+        ).forEach(
+            function (element) {
+                const titleElement =
+                    element.querySelector(
+                        ".entry-title"
+                    );
+
+                const detailsElement =
+                    element.querySelector(
+                        ".entry-details"
+                    );
+
+                if (!titleElement) {
+                    return;
+                }
+
+                const title =
+                    titleElement.textContent.trim();
+
+                const description =
+                    detailsElement
+                        ? detailsElement.textContent.trim()
+                        : "";
+
+                const key =
+                    "signal|" +
+                    title +
+                    "|" +
+                    description;
+
+                connectRecord(
+                    element,
+                    title,
+                    description,
+                    key
+                );
+            }
+        );
+    }
+
+    function connectChallenges() {
+        const list =
+            document.getElementById(
+                "challengesList"
+            );
+
+        if (!list) {
+            return;
+        }
+
+        list.querySelectorAll(
+            ".entry"
+        ).forEach(
+            function (element) {
+                const titleElement =
+                    element.querySelector(
+                        ".entry-title"
+                    );
+
+                const detailsElement =
+                    element.querySelector(
+                        ".entry-details"
+                    );
+
+                if (!titleElement) {
+                    return;
+                }
+
+                const title =
+                    titleElement.textContent.trim();
+
+                const description =
+                    detailsElement
+                        ? detailsElement.textContent.trim()
+                        : "";
+
+                const key =
+                    "challenge|" +
+                    title +
+                    "|" +
+                    description;
+
+                connectRecord(
+                    element,
+                    title,
+                    description,
+                    key
+                );
+            }
+        );
+    }
+
+    function connectSmartCity() {
+        connectSignals();
+        connectChallenges();
+    }
+
+    window.SPFConnectSmartCity =
+        connectSmartCity;
+
+    connectSmartCity();
+
+    const observer =
+        new MutationObserver(
+            function () {
+                connectSmartCity();
+            }
+        );
+
+    observer.observe(
+        document.body,
+        {
+            childList: true,
+            subtree: true
+        }
+    );
+})();
+</script>
+
+</body>
+</html>

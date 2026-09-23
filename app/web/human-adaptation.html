@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>SPF Studio Inc. — Human Adaptation</title>
+
+<style>
+
+:root {
+    --charcoal: #111827;
+    --charcoal-soft: #1F2937;
+    --slate: #374151;
+    --blue: #4F7CFF;
+    --blue-light: #6EA8FE;
+    --blue-soft: #EEF4FF;
+    --amber: #F59E0B;
+    --background: #F8FAFC;
+    --white: #FFFFFF;
+    --text: #172033;
+    --text-soft: #667085;
+    --border: #E5E7EB;
+    --success: #16A34A;
+    --success-soft: #ECFDF3;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+.topbar {
+    height: 72px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+}
+
+.brand-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--charcoal);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.brand-name {
+    font-size: 14px;
+}
+
+.brand-subtitle {
+    font-size: 11px;
+    color: var(--text-soft);
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.back-button {
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--text);
+    border-radius: 8px;
+    padding: 9px 14px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 48px 28px 80px;
+}
+
+.eyebrow {
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(34px, 5vw, 54px);
+    line-height: 1.05;
+    letter-spacing: -.04em;
+}
+
+.intro {
+    max-width: 780px;
+    margin-top: 18px;
+    color: var(--text-soft);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    padding: 9px 13px;
+    border-radius: 999px;
+    background: var(--success-soft);
+    color: var(--success);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 32px;
+}
+
+.stat {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.stat span {
+    display: block;
+    color: var(--text-soft);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.stat strong {
+    display: block;
+    margin-top: 8px;
+    font-size: 28px;
+}
+
+.modules {
+    display: grid;
+    gap: 18px;
+    margin-top: 32px;
+}
+
+.module {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 26px;
+}
+
+.module-number {
+    color: var(--blue);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .1em;
+}
+
+.module h2 {
+    margin: 8px 0 6px;
+    font-size: 24px;
+}
+
+.module p {
+    margin: 0;
+    color: var(--text-soft);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.entry-form {
+    margin-top: 20px;
+    display: grid;
+    gap: 10px;
+}
+
+.entry-form input,
+.entry-form textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 14px;
+    font: inherit;
+    outline: none;
+    background: var(--background);
+}
+
+.entry-form textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.entry-form input:focus,
+.entry-form textarea:focus {
+    border-color: var(--blue);
+    background: var(--white);
+}
+
+.entry-form button {
+    width: fit-content;
+    border: 0;
+    border-radius: 9px;
+    background: var(--blue);
+    color: var(--white);
+    padding: 11px 17px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.entries {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.entry {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    background: var(--background);
+}
+
+.entry-title {
+    font-weight: 800;
+}
+
+.entry-details {
+    margin-top: 7px;
+    color: var(--text-soft);
+    font-size: 13px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+}
+
+.entry-meta {
+    margin-top: 10px;
+    color: var(--text-soft);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.empty {
+    color: var(--text-soft);
+    font-size: 13px;
+    padding: 10px 0;
+}
+
+@media (max-width: 800px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .topbar {
+        padding: 0 16px;
+    }
+
+    .container {
+        padding: 34px 18px 60px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-mark">
+            SPF
+        </div>
+
+        <div class="brand-text">
+
+            <div class="brand-name">
+                SPF Studio Inc.
+            </div>
+
+            <div class="brand-subtitle">
+                Smart Future
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="topbar-right">
+
+        <button
+            class="back-button"
+            onclick="window.location.href='/future-intelligence'"
+        >
+            ← Smart Future
+        </button>
+
+        <button
+            class="back-button"
+            onclick="window.location.href='/'"
+        >
+            Command Center
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="eyebrow">
+        HUMAN ADAPTATION
+    </div>
+
+    <h1>
+        Human Adaptation
+    </h1>
+
+    <p class="intro">
+        A workspace for understanding how people, skills and institutions can adapt to rapid technological and social change.
+    </p>
+
+    <div class="status">
+        <span class="status-dot"></span>
+        Domain dashboard active
+    </div>
+
+
+    <section class="stats">
+
+        
+            <div class="stat">
+                <span>Total</span>
+                <strong id="stat-total">
+                    0
+                </strong>
+            </div>
+        
+            <div class="stat">
+                <span>Signals</span>
+                <strong id="stat-signals">
+                    0
+                </strong>
+            </div>
+        
+            <div class="stat">
+                <span>Skills</span>
+                <strong id="stat-skills">
+                    0
+                </strong>
+            </div>
+        
+            <div class="stat">
+                <span>Initiatives</span>
+                <strong id="stat-initiatives">
+                    0
+                </strong>
+            </div>
+        
+
+    </section>
+
+
+    <section class="modules">
+
+        
+            <section class="module">
+
+                <div class="module-header">
+
+                    <div>
+                        <div class="module-number">
+                            01
+                        </div>
+
+                        <h2>
+                            Change Signals
+                        </h2>
+
+                        <p>
+                            Identify technological, economic and social changes affecting people.
+                        </p>
+                    </div>
+
+                </div>
+
+                <form
+                    class="entry-form"
+                    onsubmit="addEntry(event, 'human-adaptation-1')"
+                >
+
+                    <input
+                        name="title"
+                        type="text"
+                        placeholder="Add a change signal..."
+                        required
+                    >
+
+                    <textarea
+                        name="details"
+                        placeholder="Add notes, evidence or observations..."
+                    ></textarea>
+
+                    <button type="submit">
+                        Add Entry
+                    </button>
+
+                </form>
+
+                <div
+                    class="entries"
+                    id="entries-human-adaptation-1"
+                ></div>
+
+            </section>
+        
+            <section class="module">
+
+                <div class="module-header">
+
+                    <div>
+                        <div class="module-number">
+                            02
+                        </div>
+
+                        <h2>
+                            Human Needs
+                        </h2>
+
+                        <p>
+                            Capture emerging needs, barriers and adaptation challenges.
+                        </p>
+                    </div>
+
+                </div>
+
+                <form
+                    class="entry-form"
+                    onsubmit="addEntry(event, 'human-adaptation-2')"
+                >
+
+                    <input
+                        name="title"
+                        type="text"
+                        placeholder="Describe a human need..."
+                        required
+                    >
+
+                    <textarea
+                        name="details"
+                        placeholder="Add notes, evidence or observations..."
+                    ></textarea>
+
+                    <button type="submit">
+                        Add Entry
+                    </button>
+
+                </form>
+
+                <div
+                    class="entries"
+                    id="entries-human-adaptation-2"
+                ></div>
+
+            </section>
+        
+            <section class="module">
+
+                <div class="module-header">
+
+                    <div>
+                        <div class="module-number">
+                            03
+                        </div>
+
+                        <h2>
+                            Skills & Capability
+                        </h2>
+
+                        <p>
+                            Track capabilities people may need in changing environments.
+                        </p>
+                    </div>
+
+                </div>
+
+                <form
+                    class="entry-form"
+                    onsubmit="addEntry(event, 'human-adaptation-3')"
+                >
+
+                    <input
+                        name="title"
+                        type="text"
+                        placeholder="Add a future skill..."
+                        required
+                    >
+
+                    <textarea
+                        name="details"
+                        placeholder="Add notes, evidence or observations..."
+                    ></textarea>
+
+                    <button type="submit">
+                        Add Entry
+                    </button>
+
+                </form>
+
+                <div
+                    class="entries"
+                    id="entries-human-adaptation-3"
+                ></div>
+
+            </section>
+        
+            <section class="module">
+
+                <div class="module-header">
+
+                    <div>
+                        <div class="module-number">
+                            04
+                        </div>
+
+                        <h2>
+                            Adaptation Initiatives
+                        </h2>
+
+                        <p>
+                            Develop programs, products and initiatives that help people adapt.
+                        </p>
+                    </div>
+
+                </div>
+
+                <form
+                    class="entry-form"
+                    onsubmit="addEntry(event, 'human-adaptation-4')"
+                >
+
+                    <input
+                        name="title"
+                        type="text"
+                        placeholder="Describe an initiative..."
+                        required
+                    >
+
+                    <textarea
+                        name="details"
+                        placeholder="Add notes, evidence or observations..."
+                    ></textarea>
+
+                    <button type="submit">
+                        Add Entry
+                    </button>
+
+                </form>
+
+                <div
+                    class="entries"
+                    id="entries-human-adaptation-4"
+                ></div>
+
+            </section>
+        
+
+    </section>
+
+</main>
+
+
+<script>
+
+function getEntries(key) {
+    try {
+        return JSON.parse(
+            localStorage.getItem(key) || "[]"
+        );
+    } catch {
+        return [];
+    }
+}
+
+
+function saveEntries(key, entries) {
+    localStorage.setItem(
+        key,
+        JSON.stringify(entries)
+    );
+}
+
+
+function escapeHtml(value) {
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+function addEntry(event, key) {
+
+    event.preventDefault();
+
+    const form = event.target;
+
+    const title =
+        form.elements.title.value.trim();
+
+    const details =
+        form.elements.details.value.trim();
+
+    if (!title) {
+        return;
+    }
+
+    const entries = getEntries(key);
+
+    entries.unshift({
+        title,
+        details,
+        created:
+            new Date().toLocaleString()
+    });
+
+    saveEntries(key, entries);
+
+    form.reset();
+
+    renderEntries(key);
+
+    updateStats();
+}
+
+
+function renderEntries(key) {
+
+    const container =
+        document.getElementById(
+            "entries-" + key
+        );
+
+    if (!container) {
+        return;
+    }
+
+    const entries =
+        getEntries(key);
+
+    if (!entries.length) {
+        container.innerHTML =
+            '<div class="empty">No entries yet.</div>';
+
+        return;
+    }
+
+    container.innerHTML =
+        entries.map(entry => `
+            <div class="entry">
+
+                <div class="entry-title">
+                    ${escapeHtml(entry.title)}
+                </div>
+
+                <div class="entry-details">
+                    ${escapeHtml(entry.details || "No additional notes.")}
+                </div>
+
+                <div class="entry-meta">
+                    Added ${escapeHtml(entry.created)}
+                </div>
+
+            </div>
+        `).join("");
+}
+
+
+function updateStats() {
+
+    let total = 0;
+
+    document
+        .querySelectorAll(".entries")
+        .forEach(container => {
+
+            const key =
+                container.id.replace(
+                    "entries-",
+                    ""
+                );
+
+            total += getEntries(key).length;
+        });
+
+    const totalElement =
+        document.getElementById(
+            "stat-total"
+        );
+
+    if (totalElement) {
+        totalElement.textContent = total;
+    }
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        document
+            .querySelectorAll(".entries")
+            .forEach(container => {
+
+                const key =
+                    container.id.replace(
+                        "entries-",
+                        ""
+                    );
+
+                renderEntries(key);
+            });
+
+        updateStats();
+    }
+);
+
+</script>
+
+
+<script>
+window.SPF_SMART_FUTURE_DOMAIN = 'Human Adaptation';
+</script>
+
+
+
+<style>
+.send-to-innovation {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+    padding: 9px 14px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #172033;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.send-to-innovation:hover {
+    background: #f8fafc;
+}
+
+.send-to-innovation:disabled {
+    cursor: default;
+    opacity: 0.75;
+}
+
+.send-to-innovation.innovation-sent {
+    border-color: #16a34a;
+    color: #166534;
+    background: #ecfdf3;
+}
+</style>
+
+
+
+<script>
+(function () {
+    const SPF_TOKEN_KEY = "spf_access_token";
+    const SPF_ORG_KEY = "spf_organization_id";
+
+    const INNOVATION_SENT_KEY =
+        "spf_smart_future_innovation_sent";
+
+    function getInnovationSent() {
+        try {
+            return JSON.parse(
+                localStorage.getItem(INNOVATION_SENT_KEY) || "{}"
+            );
+        } catch {
+            return {};
+        }
+    }
+
+    function markInnovationSent(key) {
+        const sent = getInnovationSent();
+
+        sent[key] = true;
+
+        localStorage.setItem(
+            INNOVATION_SENT_KEY,
+            JSON.stringify(sent)
+        );
+    }
+
+    function getToken() {
+        return localStorage.getItem(SPF_TOKEN_KEY);
+    }
+
+    function getOrganizationId() {
+        return (
+            localStorage.getItem(SPF_ORG_KEY) ||
+            "7"
+        );
+    }
+
+    async function sendToInnovation(
+        title,
+        description,
+        domain,
+        sourceType,
+        sourceReference,
+        button
+    ) {
+        const token = getToken();
+
+        if (!token) {
+            alert("Please sign in first.");
+            window.location.href = "/login";
+            return false;
+        }
+
+        button.disabled = true;
+        button.textContent = "Sending...";
+
+        try {
+            const response = await fetch(
+                "/innovation/problems",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json",
+
+                        "Authorization":
+                            "Bearer " + token,
+
+                        "X-Organization-ID":
+                            getOrganizationId()
+                    },
+
+                    body: JSON.stringify({
+                        title: title,
+
+                        description:
+                            description ||
+                            "Discovered through Smart Future.",
+
+                        status: "new",
+
+                        domain: domain,
+
+                        source_type: sourceType,
+
+                        source_reference:
+                            sourceReference,
+
+                        discovered_by:
+                            "Smart Future",
+
+                        urgency:
+                            "To be assessed",
+
+                        impact_potential:
+                            "To be assessed",
+
+                        strategic_relevance:
+                            "To be assessed"
+                    })
+                }
+            );
+
+            const data =
+                await response.json();
+
+            if (!response.ok) {
+                throw new Error(
+                    data.detail ||
+                    "Unable to send to Innovation."
+                );
+            }
+
+            button.textContent =
+                "Sent to Innovation ✓";
+
+            button.classList.add(
+                "innovation-sent"
+            );
+
+            return true;
+
+        } catch (error) {
+            console.error(error);
+
+            button.disabled = false;
+
+            button.textContent =
+                "Send to Innovation";
+
+            alert(
+                error.message ||
+                "Unable to send to Innovation."
+            );
+
+            return false;
+        }
+    }
+
+    function addInnovationButton(
+        entryElement,
+        title,
+        description,
+        domain,
+        sourceReference,
+        uniqueKey
+    ) {
+        if (
+            entryElement.querySelector(
+                ".send-to-innovation"
+            )
+        ) {
+            return;
+        }
+
+        const button =
+            document.createElement("button");
+
+        button.type = "button";
+
+        button.className =
+            "send-to-innovation";
+
+        button.textContent =
+            "Send to Innovation";
+
+        const sent =
+            getInnovationSent();
+
+        if (sent[uniqueKey]) {
+            button.textContent =
+                "Sent to Innovation ✓";
+
+            button.classList.add(
+                "innovation-sent"
+            );
+
+            button.disabled = true;
+        }
+
+        button.addEventListener(
+            "click",
+            async function () {
+                if (getInnovationSent()[uniqueKey]) {
+                    return;
+                }
+
+                const success =
+                    await sendToInnovation(
+                        title,
+                        description,
+                        domain,
+                        "Smart Future",
+                        sourceReference,
+                        button
+                    );
+
+                if (success) {
+                    markInnovationSent(uniqueKey);
+                }
+            }
+        );
+
+        entryElement.appendChild(button);
+    }
+
+    function connectSmartFutureEntries() {
+        const domain =
+            window.SPF_SMART_FUTURE_DOMAIN;
+
+        const sourceReference =
+            window.location.pathname;
+
+        if (!domain) {
+            return;
+        }
+
+        const entryElements =
+            document.querySelectorAll(
+                ".entry"
+            );
+
+        entryElements.forEach(
+            function (entryElement) {
+                const titleElement =
+                    entryElement.querySelector(
+                        ".entry-title"
+                    );
+
+                const detailsElement =
+                    entryElement.querySelector(
+                        ".entry-details"
+                    );
+
+                if (!titleElement) {
+                    return;
+                }
+
+                const title =
+                    titleElement.textContent.trim();
+
+                const description =
+                    detailsElement
+                        ? detailsElement.textContent.trim()
+                        : "";
+
+                const uniqueKey =
+                    [
+                        domain,
+                        title,
+                        description
+                    ].join("|");
+
+                addInnovationButton(
+                    entryElement,
+                    title,
+                    description,
+                    domain,
+                    sourceReference,
+                    uniqueKey
+                );
+            }
+        );
+    }
+
+    function watchSmartFutureEntries() {
+        connectSmartFutureEntries();
+
+        const observer =
+            new MutationObserver(
+                function () {
+                    connectSmartFutureEntries();
+                }
+            );
+
+        observer.observe(
+            document.body,
+            {
+                childList: true,
+                subtree: true
+            }
+        );
+    }
+
+    window.SPFConnectSmartFuture =
+        watchSmartFutureEntries;
+})();
+</script>
+
+
+<script>
+if (window.SPFConnectSmartFuture) {
+    window.SPFConnectSmartFuture();
+}
+</script>
+
+</body>
+
+</html>

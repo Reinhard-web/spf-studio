@@ -582,6 +582,209 @@
 
         }
 
+        .qualification-console {
+    margin-top: 28px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+}
+
+.qualification-console label {
+    display: block;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.qualification-console textarea {
+    width: 100%;
+    min-height: 110px;
+    padding: 16px;
+    resize: vertical;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #FFFFFF;
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.6;
+    outline: none;
+}
+
+.qualification-console textarea::placeholder {
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.qualification-console textarea:focus {
+    border-color: var(--blue-light);
+}
+
+.qualification-button {
+    margin-top: 14px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 9px;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.qualification-button:hover {
+    background: var(--blue-light);
+}
+
+.qualification-result {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-title {
+    margin-bottom: 14px;
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.assessment-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.assessment-item {
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.assessment-item span {
+    display: block;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 10px;
+    margin-bottom: 7px;
+}
+
+.assessment-item strong {
+    color: var(--white);
+    font-size: 18px;
+}
+
+.assessment-note {
+    margin-top: 16px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+    .assessment-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+    
+
+        .smart-future-section {
+            margin-top: 42px;
+        }
+
+        .smart-future-header {
+            margin-bottom: 20px;
+        }
+
+        .smart-future-eyebrow {
+            color: var(--blue);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            margin-bottom: 8px;
+        }
+
+        .smart-future-header h2 {
+            margin: 0;
+            font-size: 30px;
+            letter-spacing: -0.03em;
+        }
+
+        .smart-future-header p {
+            max-width: 760px;
+            margin: 10px 0 0;
+            color: var(--text-soft);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .smart-future-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .smart-future-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            min-height: 220px;
+            cursor: pointer;
+            transition:
+                transform .18s ease,
+                box-shadow .18s ease,
+                border-color .18s ease;
+        }
+
+        .smart-future-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 32px rgba(15, 23, 42, .08);
+            border-color: var(--blue-light);
+        }
+
+        .smart-future-number {
+            color: var(--blue);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .1em;
+        }
+
+        .smart-future-title {
+            margin-top: 24px;
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .smart-future-text {
+            margin-top: 10px;
+            color: var(--text-soft);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .smart-future-link {
+            margin-top: 20px;
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        @media (max-width: 900px) {
+            .smart-future-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .smart-future-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
     </style>
 
 </head>
@@ -777,25 +980,248 @@
         </section>
 
 
-        <section class="qualification">
+        
 
-            <div class="card-number">
-                07 · QUALIFICATION ENGINE
+        <section class="smart-future-section">
+
+            <div class="smart-future-header">
+
+                <div>
+                    <div class="smart-future-eyebrow">
+                        SMART FUTURE
+                    </div>
+
+                    <h2>
+                        Explore what comes next.
+                    </h2>
+
+                    <p>
+                        Five future-facing domains for discovering,
+                        understanding and developing the next generation
+                        of intelligent solutions.
+                    </p>
+                </div>
+
             </div>
 
-            <h2>
-                What deserves attention?
-            </h2>
 
-            <p>
-                AI will eventually assess signals and opportunities
-                against evidence, relevance, potential, feasibility
-                and risk—helping SPF focus human attention where it
-                matters most.
-            </p>
+            <div class="smart-future-grid">
+
+
+                <article
+                    class="smart-future-card"
+                    onclick="window.location.href='/ai-safety'"
+                >
+
+                    <div class="smart-future-number">
+                        01
+                    </div>
+
+                    <div class="smart-future-title">
+                        AI Safety
+                    </div>
+
+                    <div class="smart-future-text">
+                        Explore AI risks, trust, safeguards,
+                        evaluations and responsible deployment.
+                    </div>
+
+                    <div class="smart-future-link">
+                        Open Dashboard →
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="smart-future-card"
+                    onclick="window.location.href='/autonomous-work'"
+                >
+
+                    <div class="smart-future-number">
+                        02
+                    </div>
+
+                    <div class="smart-future-title">
+                        Autonomous Work
+                    </div>
+
+                    <div class="smart-future-text">
+                        Explore AI agents, automation, workflows,
+                        human oversight and the future of work.
+                    </div>
+
+                    <div class="smart-future-link">
+                        Open Dashboard →
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="smart-future-card"
+                    onclick="window.location.href='/smart-city'"
+                >
+
+                    <div class="smart-future-number">
+                        03
+                    </div>
+
+                    <div class="smart-future-title">
+                        Smart Cities
+                    </div>
+
+                    <div class="smart-future-text">
+                        Discover urban signals, challenges,
+                        opportunities, projects and measurable impact.
+                    </div>
+
+                    <div class="smart-future-link">
+                        Open Dashboard →
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="smart-future-card"
+                    onclick="window.location.href='/smart-agriculture'"
+                >
+
+                    <div class="smart-future-number">
+                        04
+                    </div>
+
+                    <div class="smart-future-title">
+                        Smart Agriculture
+                    </div>
+
+                    <div class="smart-future-text">
+                        Explore agricultural signals, challenges,
+                        opportunities, solutions, pilots and outcomes.
+                    </div>
+
+                    <div class="smart-future-link">
+                        Open Dashboard →
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="smart-future-card"
+                    onclick="window.location.href='/human-adaptation'"
+                >
+
+                    <div class="smart-future-number">
+                        05
+                    </div>
+
+                    <div class="smart-future-title">
+                        Human Adaptation
+                    </div>
+
+                    <div class="smart-future-text">
+                        Explore changing human needs, skills,
+                        capabilities and adaptation opportunities.
+                    </div>
+
+                    <div class="smart-future-link">
+                        Open Dashboard →
+                    </div>
+
+                </article>
+
+
+            </div>
 
         </section>
 
+
+        <section class="qualification">
+
+    <div class="card-number">
+        07 · QUALIFICATION ENGINE
+    </div>
+
+    <h2>
+        What deserves attention?
+    </h2>
+
+    <p>
+        Assess an emerging signal or opportunity before it
+        enters the SPF Innovation pipeline.
+    </p>
+
+    <div class="qualification-console">
+
+        <label for="qualificationInput">
+            SIGNAL OR OPPORTUNITY
+        </label>
+
+        <textarea
+            id="qualificationInput"
+            placeholder="Example: Small businesses need better AI-powered customer follow-up."
+        ></textarea>
+
+        <button
+            type="button"
+            class="qualification-button"
+            onclick="runQualification()"
+        >
+            Assess Opportunity
+        </button>
+
+        <div
+            id="qualificationResult"
+            class="qualification-result"
+            hidden
+        >
+
+            <div class="result-title">
+                Qualification Assessment
+            </div>
+
+            <div class="assessment-grid">
+
+                <div class="assessment-item">
+                    <span>Evidence</span>
+                    <strong id="scoreEvidence">—</strong>
+                </div>
+
+                <div class="assessment-item">
+                    <span>Relevance</span>
+                    <strong id="scoreRelevance">—</strong>
+                </div>
+
+                <div class="assessment-item">
+                    <span>Potential</span>
+                    <strong id="scorePotential">—</strong>
+                </div>
+
+                <div class="assessment-item">
+                    <span>Feasibility</span>
+                    <strong id="scoreFeasibility">—</strong>
+                </div>
+
+                <div class="assessment-item">
+                    <span>Risk</span>
+                    <strong id="scoreRisk">—</strong>
+                </div>
+
+            </div>
+
+            <div class="assessment-note">
+                Prototype assessment only. Future Intelligence
+                will eventually use live signals, evidence and
+                specialized AI agents.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
         <section class="review">
 
@@ -825,6 +1251,608 @@
 
     </main>
 
+
+    <script>
+    function runQualification() {
+
+    const input =
+        document.getElementById("qualificationInput");
+
+    const result =
+        document.getElementById("qualificationResult");
+
+    if (!input || !result) {
+        return;
+    }
+
+
+    const value =
+        input.value.trim();
+
+
+    if (!value) {
+
+        result.hidden = false;
+
+        result.innerHTML = `
+            <div class="result-title">
+                Please enter a signal or opportunity to assess.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    const text =
+        value.toLowerCase();
+
+
+    let evidenceScore = 3;
+    let relevanceScore = 3;
+    let potentialScore = 3;
+    let feasibilityScore = 3;
+    let riskScore = 3;
+
+
+    const evidenceWords = [
+        "data",
+        "research",
+        "study",
+        "report",
+        "customers",
+        "customer",
+        "users",
+        "demand",
+        "survey",
+        "market",
+        "evidence",
+        "growth",
+        "sales"
+    ];
+
+
+    const problemWords = [
+        "problem",
+        "need",
+        "struggle",
+        "difficulty",
+        "challenge",
+        "pain",
+        "lack",
+        "inefficient",
+        "expensive",
+        "slow",
+        "manual",
+        "missed",
+        "shortage"
+    ];
+
+
+    const technologyWords = [
+        "ai",
+        "artificial intelligence",
+        "automation",
+        "software",
+        "platform",
+        "digital",
+        "app",
+        "data",
+        "technology",
+        "system",
+        "tool"
+    ];
+
+
+    const riskWords = [
+        "medical",
+        "health",
+        "financial",
+        "finance",
+        "security",
+        "privacy",
+        "children",
+        "government",
+        "critical",
+        "safety"
+    ];
+
+
+    const feasibilityWords = [
+        "software",
+        "platform",
+        "app",
+        "digital",
+        "automation",
+        "ai",
+        "technology",
+        "online",
+        "system"
+    ];
+
+
+    if (
+        evidenceWords.some(
+            word => text.includes(word)
+        )
+    ) {
+        evidenceScore = 4;
+    }
+
+
+    if (
+        problemWords.some(
+            word => text.includes(word)
+        )
+    ) {
+        relevanceScore = 4;
+    }
+
+
+    if (
+        technologyWords.some(
+            word => text.includes(word)
+        )
+    ) {
+        potentialScore = 4;
+    }
+
+
+    if (
+        feasibilityWords.some(
+            word => text.includes(word)
+        )
+    ) {
+        feasibilityScore = 4;
+    }
+
+
+    if (
+        riskWords.some(
+            word => text.includes(word)
+        )
+    ) {
+        riskScore = 2;
+    }
+
+
+    if (text.length > 120) {
+
+        evidenceScore =
+            Math.min(5, evidenceScore + 1);
+
+    }
+
+
+    if (
+        text.includes("large market") ||
+        text.includes("high demand") ||
+        text.includes("many businesses") ||
+        text.includes("millions")
+    ) {
+
+        potentialScore =
+            Math.min(5, potentialScore + 1);
+    }
+
+
+    if (
+        text.includes("prototype") ||
+        text.includes("existing technology") ||
+        text.includes("already available")
+    ) {
+
+        feasibilityScore =
+            Math.min(5, feasibilityScore + 1);
+    }
+
+
+    function scoreLabel(score) {
+
+        if (score >= 5) {
+            return "Strong";
+        }
+
+        if (score >= 4) {
+            return "Good";
+        }
+
+        if (score >= 3) {
+            return "Moderate";
+        }
+
+        if (score >= 2) {
+            return "Low";
+        }
+
+        return "Weak";
+    }
+
+
+    const overallScore =
+        (
+            evidenceScore +
+            relevanceScore +
+            potentialScore +
+            feasibilityScore +
+            riskScore
+        ) / 5;
+
+
+    let qualification;
+    let reasoning;
+    let nextStep;
+
+
+    if (overallScore >= 4.2) {
+
+        qualification =
+            "Strong Candidate";
+
+        reasoning =
+            "The signal shows strong potential across relevance, " +
+            "evidence, feasibility and product opportunity. " +
+            "It should now be reviewed by a human before entering Innovation.";
+
+        nextStep =
+            "Send to Human Review";
+
+
+    } else if (overallScore >= 3.4) {
+
+        qualification =
+            "Worth Investigating";
+
+        reasoning =
+            "The signal shows promising characteristics, but important " +
+            "evidence or validation is still required before advancing.";
+
+        nextStep =
+            "Gather Evidence";
+
+
+    } else {
+
+        qualification =
+            "Needs More Evidence";
+
+        reasoning =
+            "The signal currently lacks enough evidence or clarity " +
+            "to justify advancing it. More discovery is required.";
+
+        nextStep =
+            "Continue Discovery";
+    }
+
+
+    result.hidden = false;
+
+
+    result.innerHTML = `
+
+        <div class="result-title">
+            Qualification Assessment
+        </div>
+
+
+        <div class="assessment-grid">
+
+            <div class="assessment-item">
+                <span>Evidence</span>
+                <strong>
+                    ${scoreLabel(evidenceScore)}
+                </strong>
+            </div>
+
+
+            <div class="assessment-item">
+                <span>Relevance</span>
+                <strong>
+                    ${scoreLabel(relevanceScore)}
+                </strong>
+            </div>
+
+
+            <div class="assessment-item">
+                <span>Potential</span>
+                <strong>
+                    ${scoreLabel(potentialScore)}
+                </strong>
+            </div>
+
+
+            <div class="assessment-item">
+                <span>Feasibility</span>
+                <strong>
+                    ${scoreLabel(feasibilityScore)}
+                </strong>
+            </div>
+
+
+            <div class="assessment-item">
+                <span>Risk</span>
+                <strong>
+                    ${scoreLabel(riskScore)}
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div style="
+            margin-top:24px;
+            padding:20px;
+            background:rgba(255,255,255,0.06);
+            border:1px solid rgba(255,255,255,0.10);
+            border-radius:12px;
+        ">
+
+            <div style="
+                font-size:10px;
+                font-weight:800;
+                letter-spacing:1.5px;
+                color:rgba(255,255,255,0.55);
+                margin-bottom:8px;
+            ">
+                OVERALL QUALIFICATION
+            </div>
+
+
+            <div style="
+                font-size:24px;
+                font-weight:800;
+                color:#FFFFFF;
+            ">
+                ${qualification}
+            </div>
+
+
+            <div style="
+                margin-top:18px;
+                font-size:10px;
+                font-weight:800;
+                letter-spacing:1.5px;
+                color:rgba(255,255,255,0.55);
+            ">
+                REASONING
+            </div>
+
+
+            <div style="
+                margin-top:7px;
+                color:#CBD5E1;
+                line-height:1.6;
+                font-size:13px;
+            ">
+                ${reasoning}
+            </div>
+
+
+            <div style="
+                margin-top:18px;
+                font-size:10px;
+                font-weight:800;
+                letter-spacing:1.5px;
+                color:rgba(255,255,255,0.55);
+            ">
+                RECOMMENDED NEXT STEP
+            </div>
+
+
+            <div style="
+                margin-top:7px;
+                color:#FFFFFF;
+                font-size:14px;
+                font-weight:700;
+            ">
+                ${nextStep}
+            </div>
+
+        </div>
+
+
+        <div class="assessment-note">
+            Prototype assessment only.
+            Future Intelligence will eventually use live signals,
+            evidence and specialized AI agents.
+        </div>
+
+    `;
+}
+
+
+    function openHumanReview() {
+
+    const input =
+        document.getElementById("qualificationInput");
+
+    const result =
+        document.getElementById("qualificationResult");
+
+    const value =
+        input ? input.value.trim() : "";
+
+
+    if (!value) {
+
+        alert(
+            "Please assess an opportunity before sending it to Human Review."
+        );
+
+        return;
+    }
+
+
+    result.hidden = false;
+
+
+    result.innerHTML = `
+
+        <div class="result-title">
+            Human Review
+        </div>
+
+
+        <div style="
+            margin-top:16px;
+            padding:20px;
+            background:rgba(255,255,255,0.06);
+            border:1px solid rgba(255,255,255,0.10);
+            border-radius:12px;
+        ">
+
+            <div style="
+                font-size:10px;
+                font-weight:800;
+                letter-spacing:1.5px;
+                color:rgba(255,255,255,0.55);
+                margin-bottom:8px;
+            ">
+                SIGNAL / OPPORTUNITY
+            </div>
+
+
+            <div style="
+                color:#FFFFFF;
+                font-size:15px;
+                line-height:1.6;
+            ">
+                ${value}
+            </div>
+
+        </div>
+
+
+        <div style="
+            margin-top:20px;
+            color:#CBD5E1;
+            font-size:13px;
+            line-height:1.6;
+        ">
+            Future Intelligence has identified this opportunity for
+            human consideration. Review the signal and decide whether
+            it should enter the Innovation pipeline.
+        </div>
+
+
+        <div style="
+            display:grid;
+            grid-template-columns:repeat(3, 1fr);
+            gap:12px;
+            margin-top:24px;
+        ">
+
+            <button
+                type="button"
+                onclick="humanReviewDecision('innovation')"
+                style="
+                    padding:14px;
+                    border-radius:10px;
+                    border:1px solid rgba(255,255,255,0.15);
+                    background:#4F7CFF;
+                    color:#FFFFFF;
+                    font-weight:700;
+                    cursor:pointer;
+                "
+            >
+                Send to Innovation
+            </button>
+
+
+            <button
+                type="button"
+                onclick="humanReviewDecision('watch')"
+                style="
+                    padding:14px;
+                    border-radius:10px;
+                    border:1px solid rgba(255,255,255,0.15);
+                    background:rgba(255,255,255,0.06);
+                    color:#FFFFFF;
+                    font-weight:700;
+                    cursor:pointer;
+                "
+            >
+                Keep Watching
+            </button>
+
+
+            <button
+                type="button"
+                onclick="humanReviewDecision('reject')"
+                style="
+                    padding:14px;
+                    border-radius:10px;
+                    border:1px solid rgba(255,255,255,0.15);
+                    background:rgba(255,255,255,0.06);
+                    color:#FFFFFF;
+                    font-weight:700;
+                    cursor:pointer;
+                "
+            >
+                Reject / Not Now
+            </button>
+
+        </div>
+
+
+        <div
+            id="humanReviewStatus"
+            style="
+                margin-top:20px;
+                display:none;
+                padding:16px;
+                border-radius:10px;
+                background:rgba(255,255,255,0.06);
+                color:#CBD5E1;
+                line-height:1.5;
+            "
+        ></div>
+
+    `;
+}
+
+
+function humanReviewDecision(decision) {
+
+    const status =
+        document.getElementById("humanReviewStatus");
+
+
+    if (!status) {
+        return;
+    }
+
+
+    let message;
+
+
+    if (decision === "innovation") {
+
+        message =
+            "Decision recorded: Send to Innovation.\n\n" +
+            "The opportunity is ready for human-approved " +
+            "progression into the Innovation pipeline.";
+
+    } else if (decision === "watch") {
+
+        message =
+            "Decision recorded: Keep Watching.\n\n" +
+            "The opportunity remains under observation while " +
+            "additional evidence or signals are gathered.";
+
+    } else {
+
+        message =
+            "Decision recorded: Reject / Not Now.\n\n" +
+            "The opportunity will not advance at this stage.";
+    }
+
+
+    status.style.display = "block";
+
+    status.textContent = message;
+}
+</script>
 
 </body>
 
